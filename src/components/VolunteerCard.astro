@@ -1,0 +1,21 @@
+---
+// src/components/VolunteerCard.astro
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+<div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#004ADD] transition-all group shadow-sm hover:shadow-md">
+  <h3 class="text-2xl font-bold text-[#02275A] mb-4 group-hover:text-[#004ADD] transition-colors">
+    {title}
+  </h3>
+  <p class="text-[#353A3C] leading-relaxed text-base mb-6">
+    {description}
+  </p>
+  <a href="#" class="inline-flex items-center font-bold text-[#004ADD] hover:text-[#02275A] transition">
+    Sign Up Today 
+    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+  </a>
+</div>

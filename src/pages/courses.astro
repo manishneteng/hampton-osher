@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-4xl font-extrabold text-[#02275A] mb-8">Course Catalog</h1>
+    <p class="text-lg text-[#353A3C] mb-12">Browse our upcoming selection of non-credit courses for the new semester.</p>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Example Course Cards */}
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="text-xl font-bold text-[#02275A] mb-2">Digital Photography</h3>
+        <p class="text-gray-600 mb-4">Master your camera settings and composition techniques.</p>
+        <span class="text-sm font-bold text-[#004ADD]">Starts: Aug 15</span>
+      </div>
+      
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="text-xl font-bold text-[#02275A] mb-2">History of Hampton</h3>
+        <p class="text-gray-600 mb-4">Explore the rich heritage of the Peninsula.</p>
+        <span class="text-sm font-bold text-[#004ADD]">Starts: Sept 01</span>
+      </div>
+
+      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <h3 class="text-xl font-bold text-[#02275A] mb-2">Creative Writing</h3>
+        <p class="text-gray-600 mb-4">Develop your unique voice through guided prompts.</p>
+        <span class="text-sm font-bold text-[#004ADD]">Starts: Sept 10</span>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,31 @@
+---
+// src/components/Header.astro
+---
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-24">
+      
+      {/* Brand Identity / Logo Area */}
+      <a href="/" class="flex flex-col group">
+        <span class="text-xs uppercase tracking-widest font-bold text-[#004ADD]">Hampton University</span>
+        <span class="text-xl md:text-2xl font-extrabold text-[#02275A] tracking-tight group-hover:text-[#004ADD] transition-colors">
+          Osher Lifelong Learning Institute
+        </span>
+      </a>
+
+      {/* Main Navigation Links */}
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">About</a>
+        <a href="#get-involved" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Volunteer</a>
+        <a href="/courses" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Registration</a>
+        <a href="#contact" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Contact</a>
+        
+        {/* Prominent Call to Action */}
+        <a href="#" class="px-6 py-3 bg-[#004ADD] text-white font-bold rounded-xl shadow-md hover:bg-[#02275A] transition-all text-center text-lg min-w-[140px]">
+          Make A Gift
+        </a>
+      </nav>
+      
+    </div>
+  </div>
+</header>
