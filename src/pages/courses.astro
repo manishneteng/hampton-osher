@@ -11,16 +11,9 @@ const catalogImages = Object.entries(
   })
   .map(([, src]) => src);
 
-const spreads = catalogImages.reduce((acc, img, i) => {
-  if (i === 0) {
-    acc.push([img]);
-  } else {
-    const pairIdx = Math.floor((i - 1) / 2) + 1;
-    if (!acc[pairIdx]) acc[pairIdx] = [];
-    acc[pairIdx].push(img);
-  }
-  return acc;
-}, []);
+const isCover = (i) => i === 0;
+const isLastInLeftPair = (i) => i > 0 && i % 2 === 1;
+const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 ---
 
 <Layout>
@@ -187,26 +180,22 @@ const spreads = catalogImages.reduce((acc, img, i) => {
         </svg>
       </button>
 
-      <div class="swiper [--swiper-navigation-size:24px] perspective-[1600px]" id="catalog-swiper">
+      <div class="swiper [--swiper-navigation-size:24px]" id="catalog-swiper">
         <div class="swiper-wrapper">
-          {spreads.map((spread, idx) => (
-            <div class="swiper-slide !flex items-center justify-center">
-              <div class="flex w-full items-center justify-center gap-0 sm:gap-1 {spread.length === 1 ? 'max-w-[80%] sm:max-w-[60%]' : ''}">
-                {spread.map((img, sIdx) => (
-                  <div class="relative flex-1 {spread.length === 2 && sIdx === 0 ? 'pr-1 sm:pr-2' : ''} {spread.length === 2 && sIdx === 1 ? 'pl-1 sm:pl-2' : ''}">
-                    {spread.length === 2 && sIdx === 0 && <div class="absolute right-0 top-0 h-full w-1 bg-gradient-to-l from-slate-300/50 to-transparent pointer-events-none z-10" />}
-                    {spread.length === 2 && sIdx === 1 && <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-r from-slate-300/50 to-transparent pointer-events-none z-10" />}
-                    {sIdx === 0 && <div class="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/5 to-transparent" />}
-                    {sIdx === spread.length - 1 && spread.length > 1 && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent" />}
-                    <img
-                      src={img}
-                      alt={`OLLI Course Catalog page ${catalogImages.indexOf(img) + 1}`}
-                      class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
-                      style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
+          {catalogImages.map((img, idx) => (
+            <div class="swiper-slide !flex items-center justify-center {isCover(idx) ? 'cover-slide' : ''}">
+              <div class="flex w-full items-center justify-center {isCover(idx) ? 'max-w-[80%]' : ''}">
+                <div class="relative flex-1 {!isCover(idx) && isLastInLeftPair(idx) ? 'pr-1 md:pr-2' : ''} {!isCover(idx) && isFirstInRightPair(idx) ? 'pl-1 md:pl-2' : ''}">
+                  {!isCover(idx) && isLastInLeftPair(idx) && <div class="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/5 to-transparent z-10" />}
+                  {!isCover(idx) && isFirstInRightPair(idx) && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent z-10" />}
+                  <img
+                    src={img}
+                    alt={`OLLI Course Catalog page ${idx + 1}`}
+                    class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
+                    style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           ))}
@@ -225,19 +214,34 @@ const spreads = catalogImages.reduce((acc, img, i) => {
     #catalog-swiper .swiper-slide {
       transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease;
     }
-    #catalog-swiper .swiper-slide-prev {
+    #catalog-swiper.md\:two-up {
+      perspective: 1600px;
+    }
+    #catalog-swiper.md\:two-up .swiper-slide-prev {
       opacity: 0.4;
       transform: perspective(1600px) rotateY(18deg) scale(0.92);
       transform-origin: right center;
     }
-    #catalog-swiper .swiper-slide-next {
+    #catalog-swiper.md\:two-up .swiper-slide-next {
       opacity: 0.4;
       transform: perspective(1600px) rotateY(-18deg) scale(0.92);
       transform-origin: left center;
     }
-    #catalog-swiper .swiper-slide-active {
+    #catalog-swiper.md\:two-up .swiper-slide-active {
       opacity: 1;
       transform: perspective(1600px) rotateY(0deg) scale(1);
+    }
+    /* Mobile: flat, full-width pages */
+    #catalog-swiper:not(.md\:two-up) .swiper-slide {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    #catalog-swiper:not(.md\:two-up) .swiper-slide img {
+      max-height: 85vh;
+    }
+    /* Desktop spread: cover page fills its half */
+    #catalog-swiper.md\:two-up .cover-slide > div {
+      max-width: none !important;
     }
   </style>
 
@@ -257,13 +261,32 @@ const spreads = catalogImages.reduce((acc, img, i) => {
       if (!swiperInstance) {
         const el = document.getElementById('catalog-swiper');
         if (el) {
+          const isDesktop = () => window.innerWidth >= 768;
+
           swiperInstance = new Swiper(el, {
             modules: [Navigation, Pagination, Keyboard],
             slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 0,
             navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
             pagination: { el: '.swiper-pagination', clickable: true },
             keyboard: { enabled: true },
             grabCursor: true,
+            breakpoints: {
+              768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 0,
+              },
+            },
+            on: {
+              init: function () {
+                this.el.classList.toggle('md\\:two-up', isDesktop());
+              },
+              resize: function () {
+                this.el.classList.toggle('md\\:two-up', isDesktop());
+              },
+            },
           });
         }
       } else {
