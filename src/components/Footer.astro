@@ -1,30 +1,32 @@
 ---
 // src/components/Footer.astro
 ---
-<footer id="contact" class="bg-[#02275A] text-white pt-20 pb-12 mt-20">
+<footer id="contact" class="relative bg-[#02275A] text-white pt-16 pb-10 mt-20 overflow-hidden">
+  <div class="pointer-events-none absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#93C5FD]/40 to-transparent"></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-700 pb-12 mb-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 pb-10 mb-8 border-b border-white/10">
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Connect With Us</h4>
-        <p class="text-lg font-bold mb-1">Alisha Beverley</p>
-        <p class="text-slate-300 mb-4 text-base">Director</p>
-        <a href="mailto:alisha.beverley@hamptonu.edu" class="text-white hover:text-[#93C5FD] underline break-all text-lg font-medium block mb-2 transition-colors">
+        <h4 class="text-xs uppercase font-bold tracking-[0.25em] text-[#93C5FD] mb-5">Connect With Us</h4>
+        <p class="text-xl font-bold font-display text-white mb-1">Alisha Beverley</p>
+        <p class="text-white/60 text-base mb-4">Director</p>
+        <a href="mailto:alisha.beverley@hamptonu.edu" class="inline-flex items-center gap-2 text-white hover:text-[#93C5FD] underline decoration-white/30 underline-offset-2 transition-colors text-base font-medium">
           alisha.beverley@hamptonu.edu
         </a>
-        <p class="text-sm text-slate-400 mt-4 leading-relaxed">
+        <p class="text-sm text-white/50 mt-6 leading-relaxed pt-5 border-t border-white/10">
           Monday–Friday: 8:30am–5pm<br/>
           Closed for University holidays
         </p>
       </div>
 
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Physical Address</h4>
-        <p class="text-slate-300 leading-relaxed text-base mb-6">
+        <h4 class="text-xs uppercase font-bold tracking-[0.25em] text-[#93C5FD] mb-5">Address</h4>
+        <p class="text-white/80 leading-relaxed text-base mb-5">
+          <span class="block font-semibold text-white text-sm uppercase tracking-[0.1em] mb-1">Physical</span>
           1006-H Settlers Landing Road<br/>
           Hampton, Virginia 23669
         </p>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Mailing Address</h4>
-        <p class="text-slate-300 leading-relaxed text-base">
+        <p class="text-white/80 leading-relaxed text-base">
+          <span class="block font-semibold text-white text-sm uppercase tracking-[0.1em] mb-1">Mailing</span>
           Hampton University<br/>
           Osher Lifelong Learning Institute<br/>
           P.O. Box 6162<br/>
@@ -33,19 +35,19 @@
       </div>
 
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Quick Links</h4>
+        <h4 class="text-xs uppercase font-bold tracking-[0.25em] text-[#93C5FD] mb-5">Quick Links</h4>
         <div class="flex flex-col space-y-3 text-base">
-          <a href="https://www.hamptonu.edu/" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Hampton University</a>
-          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Membership Registration</a>
-          <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Course Registration</a>
-          <a href="https://www.osherfoundation.org/" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Osher Foundation</a>
+          <a href="https://www.hamptonu.edu/" target="_blank" rel="noreferrer" class="text-white/70 hover:text-white transition-colors hover:underline decoration-white/30 underline-offset-2">Hampton University</a>
+          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noreferrer" class="text-white/70 hover:text-white transition-colors hover:underline decoration-white/30 underline-offset-2">Membership Registration</a>
+          <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noreferrer" class="text-white/70 hover:text-white transition-colors hover:underline decoration-white/30 underline-offset-2">Course Registration</a>
+          <a href="https://www.osherfoundation.org/" target="_blank" rel="noreferrer" class="text-white/70 hover:text-white transition-colors hover:underline decoration-white/30 underline-offset-2">Osher Foundation</a>
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-slate-400">
-      <p>&copy; {new Date().getFullYear()} Hampton University. All rights reserved.</p>
-      <p class="mt-2 sm:mt-0">home.hamptonu.edu/osher</p>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 text-sm text-white/40">
+      <p>&copy; {new Date().getFullYear()} Hampton University Osher Lifelong Learning Institute. All rights reserved.</p>
+      <p class="text-white/30 text-xs tracking-[0.15em] uppercase">home.hamptonu.edu/osher</p>
     </div>
   </div>
 </footer>

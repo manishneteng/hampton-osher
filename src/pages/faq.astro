@@ -3,13 +3,14 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <section class="bg-[#F5F8FD] py-24">
+  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-24">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl">
         <div class="inline-flex items-center rounded-full border border-[#DCEAFD] bg-white px-4 py-2 text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] shadow-sm">
           Support & Info
         </div>
-        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#02275A] leading-tight tracking-[-0.02em]">
+        <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
           Frequently Asked Questions
         </h1>
         <p class="mt-6 text-lg text-slate-700 leading-relaxed max-w-2xl">
@@ -31,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
 
           <div class="divide-y divide-slate-200">
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>What are the main office hours?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -41,7 +42,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>How do I become a member?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -51,7 +52,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>How can members volunteer?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -61,7 +62,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>Can members bring a guest to classes or activities?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -71,7 +72,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>Where are classes located?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -81,7 +82,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>Do members need parking passes?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -91,7 +92,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>Can accommodations be provided for accessibility needs?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -101,7 +102,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>What is the inclement weather policy?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -111,7 +112,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>How do I sign up for trips?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>
@@ -121,7 +122,7 @@ import Layout from '../layouts/Layout.astro';
             </details>
 
             <details class="group">
-              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 text-lg font-semibold font-display text-[#02275A] transition hover:bg-white/70 rounded-2xl px-2 [&::-webkit-details-marker]:hidden">
                 <span>What is the refund and credit policy?</span>
                 <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-xl font-medium text-[#004ADD] shadow-sm transition group-open:rotate-45">+</span>
               </summary>

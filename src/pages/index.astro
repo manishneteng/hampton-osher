@@ -2,10 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import VolunteerCard from '../components/VolunteerCard.astro';
 import OsherLogo from '../images/Osher20Logo.png';
+import CourseCatalogImg from '../images/CourseCatalog/1.png';
+import InterestGroupImg from '../images/CourseCatalog/8.png';
 ---
 
 <Layout>
-  <section class="bg-[#F5F8FD] py-12 lg:py-16">
+  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-12 lg:py-16">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
       <div class="max-w-4xl">
         <img
@@ -13,7 +16,7 @@ import OsherLogo from '../images/Osher20Logo.png';
           alt="Osher Lifelong Learning Institute logo"
           class="mx-auto mb-8 h-auto w-full max-w-[140px] sm:max-w-[180px] lg:max-w-[220px]"
         />
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-[#02275A] leading-tight tracking-[-0.02em]">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-display text-[#02275A] leading-tight tracking-[-0.02em]">
           50+ Living. Learning. Loving It.
         </h1>
         <p class="mt-4 text-sm uppercase tracking-[0.3em] font-semibold text-[#004ADD]">
@@ -24,10 +27,10 @@ import OsherLogo from '../images/Osher20Logo.png';
         </p>
 
         <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="/courses" class="inline-flex items-center justify-center rounded-lg bg-[#02275A] px-8 py-4 text-lg font-semibold text-white transition hover:bg-[#004ADD]">
+          <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-[#02275A] px-8 py-4 text-lg font-semibold text-white transition hover:bg-[#004ADD]">
             Explore Course Catalog
           </a>
-          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-lg border border-[#02275A] bg-white px-8 py-4 text-lg font-semibold text-[#02275A] transition hover:bg-slate-50">
+          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-[#02275A] bg-white px-8 py-4 text-lg font-semibold text-[#02275A] transition hover:bg-slate-50">
             Become a Member
           </a>
         </div>
@@ -51,9 +54,9 @@ import OsherLogo from '../images/Osher20Logo.png';
     </div>
   </section>
 
-  <section id="about" class="bg-white py-20">
+  <section id="about" class="bg-white py-16">
     <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-[#02275A] tracking-tight">
+      <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A] tracking-tight">
         Welcome to Your Next Chapter
       </h2>
       <p class="mt-6 text-lg text-slate-700 leading-relaxed">
@@ -62,10 +65,10 @@ import OsherLogo from '../images/Osher20Logo.png';
     </div>
   </section>
 
-  <section id="get-involved" class="bg-[#F8FAFC] py-20">
+  <section id="get-involved" class="bg-[#F8FAFC] py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-[#02275A]">Get Involved</h2>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A]">Get Involved</h2>
         <p class="mt-4 text-lg text-slate-700">Are you passionate about lifelong learning? Join our dynamic ecosystem of volunteers.</p>
       </div>
 
@@ -86,13 +89,65 @@ import OsherLogo from '../images/Osher20Logo.png';
     </div>
   </section>
 
-  <section id="registration" class="bg-white py-20">
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="flex flex-col rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-8">
+          <div class="overflow-hidden rounded-2xl mb-6">
+            <img
+              src={CourseCatalogImg.src}
+              alt="Course catalog preview"
+              class="h-auto w-full object-contain bg-[#F8FAFC]"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-2xl font-bold font-display text-[#02275A]">Register for Courses</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Explore a diverse selection of engaging courses designed to inspire curiosity, encourage lifelong learning, and connect you with a vibrant community of learners. From wellness and the arts to history, languages, and more, there's something for everyone.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-slate-700">
+            Browse the course catalog to discover upcoming offerings and find classes that match your interests. When you're ready, register and begin your next learning adventure.
+          </p>
+          <div class="mt-auto pt-6">
+            <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+              Register for Courses
+            </a>
+          </div>
+        </div>
+
+        <div class="flex flex-col rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-8">
+          <div class="overflow-hidden rounded-2xl mb-6">
+            <img
+              src={InterestGroupImg.src}
+              alt="Interest groups preview"
+              class="h-auto w-full object-contain bg-[#F8FAFC]"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-2xl font-bold font-display text-[#02275A]">Register for Interest Groups</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Connect with fellow members through shared interests and engaging conversations. OLLI Interest Groups provide opportunities to build friendships, explore hobbies, discuss ideas, and continue learning in a relaxed, community-centered environment.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-slate-700">
+            Browse the available Interest Groups and register to join a community that shares your passions.
+          </p>
+          <div class="mt-auto pt-6">
+            <a href="https://form.jotform.com/252124261320138" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+              Register for Interest Groups
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="registration" class="bg-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="overflow-hidden rounded-[24px] bg-gradient-to-br from-[#02275A] to-[#004ADD] p-8 shadow-[0_26px_70px_rgba(2,45,114,0.14)] sm:p-14">
         <div class="grid gap-10 lg:grid-cols-[1.8fr_1fr] items-center">
           <div class="text-white">
             <p class="text-sm uppercase tracking-[0.35em] text-slate-200">Join OLLI</p>
-            <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold">Ready to join our community?</h2>
+            <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold font-display">Ready to join our community?</h2>
             <p class="mt-5 text-lg leading-relaxed text-slate-200/90">
               Becoming a member gives you full access to our course catalog, special events, and the chance to connect with hundreds of local learners. Registration is open for the upcoming semester.
             </p>
@@ -106,11 +161,11 @@ import OsherLogo from '../images/Osher20Logo.png';
             </div>
           </div>
           <div class="rounded-2xl bg-white p-8 shadow-2xl">
-            <h3 class="text-xl font-bold text-[#02275A]">Quick Stats</h3>
+            <h3 class="text-xl font-bold font-display text-[#02275A]">Quick Stats</h3>
             <ul class="mt-6 space-y-4 text-slate-700">
-              <li class="flex gap-4 text-base leading-7"><span class="text-2xl">📚</span>50+ Unique Courses</li>
-              <li class="flex gap-4 text-base leading-7"><span class="text-2xl">👥</span>500+ Active Members</li>
-              <li class="flex gap-4 text-base leading-7"><span class="text-2xl">📍</span>Hampton University Campus</li>
+              <li class="flex gap-4 text-base leading-7"><svg class="mt-0.5 h-6 w-6 shrink-0 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg><span>50+ Unique Courses</span></li>
+              <li class="flex gap-4 text-base leading-7"><svg class="mt-0.5 h-6 w-6 shrink-0 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg><span>500+ Active Members</span></li>
+              <li class="flex gap-4 text-base leading-7"><svg class="mt-0.5 h-6 w-6 shrink-0 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" /></svg><span>Hampton University Campus</span></li>
             </ul>
           </div>
         </div>

@@ -3,13 +3,14 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <section class="bg-[#F5F8FF] py-24 sm:py-28">
+  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-24 sm:py-28">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rounded-2xl bg-white p-10 shadow-lg">
         <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div class="max-w-2xl">
             <p class="text-sm uppercase tracking-[0.3em] text-[#004ADD] font-semibold">Volunteer</p>
-            <h1 class="mt-6 text-4xl font-black text-[#071730] sm:text-5xl">Share your experience. Shape our community.</h1>
+            <h1 class="mt-6 text-4xl font-black font-display text-[#071730] sm:text-5xl">Share your experience. Shape our community.</h1>
             <p class="mt-6 text-lg leading-8 text-[#475569]">Hampton OLLI welcomes Course Instructors, Workshop Facilitators, and Interest Group Leaders who want to give back, lead conversations, and create memorable learning experiences.</p>
           </div>
           <div class="rounded-2xl bg-[#002D72] p-8 text-white shadow-lg">
@@ -26,7 +27,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="rounded-2xl bg-[#F8FBFF] p-10 shadow-lg">
         <div class="space-y-8">
           <div>
-            <h2 class="text-3xl font-semibold text-[#071730]">Start your application</h2>
+            <h2 class="text-3xl font-semibold font-display text-[#071730]">Start your application</h2>
             <p class="mt-4 text-lg leading-8 text-[#475569]">Complete the form below and our team will reach out with next steps.</p>
           </div>
           <div class="rounded-2xl bg-white p-8 shadow-md">

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --font-display: "Playfair Display", serif;
+}
+
 :root {
   color-scheme: light;
   color: #25303B;

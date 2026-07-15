@@ -1,14 +1,35 @@
 ﻿---
 import Layout from '../layouts/Layout.astro';
-import CourseCatalogImg from '../images/CourseCatalog/1.png';
+
+const catalogImages = Object.entries(
+  import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
+)
+  .sort(([a], [b]) => {
+    const numA = parseInt(a.match(/(\d+)\.png$/)?.[1] || '0');
+    const numB = parseInt(b.match(/(\d+)\.png$/)?.[1] || '0');
+    return numA - numB;
+  })
+  .map(([, src]) => src);
+
+const spreads = catalogImages.reduce((acc, img, i) => {
+  if (i === 0) {
+    acc.push([img]);
+  } else {
+    const pairIdx = Math.floor((i - 1) / 2) + 1;
+    if (!acc[pairIdx]) acc[pairIdx] = [];
+    acc[pairIdx].push(img);
+  }
+  return acc;
+}, []);
 ---
 
 <Layout>
-  <section class="bg-[#F5F8FD] py-24">
+  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-24">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-4xl mx-auto">
         <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold mb-4">Course Catalog</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#02275A] leading-tight tracking-[-0.02em]">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
           Welcome to OLLI HU
         </h1>
         <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
@@ -24,22 +45,22 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
   <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
-        <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+        <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6">
           <img
-            src={CourseCatalogImg.src}
+            src={catalogImages[0]}
             alt="OLLI Course Catalog cover"
             class="mx-auto h-auto w-full max-h-[480px] rounded-2xl object-contain"
             loading="lazy"
           />
           <div class="mt-5 text-center">
-            <a href="#" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+            <button onclick="openCatalog()" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
               Click here to view the course catalog
-            </a>
+            </button>
           </div>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
-          <h2 class="text-3xl font-extrabold text-[#02275A]">Ready to discover your next adventure?</h2>
+        <div class="rounded-[24px] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-10">
+          <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Ready to discover your next adventure?</h2>
           <p class="mt-4 text-lg leading-relaxed text-slate-700">
             Browse our courses, meet our incredible instructors, and join a community where curiosity knows no age limit.
           </p>
@@ -62,14 +83,14 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
   <section class="bg-[#F8FAFC] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold text-[#02275A]">Current Courses</h2>
+        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Current Courses</h2>
         <p class="mt-4 text-lg text-slate-700">Engaging, accessible, and member-led learning experiences designed for adults 50 and better.</p>
       </div>
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Move Your Body: Fitness</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Move Your Body: Fitness</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             An energetic weightlifting and strength-training class where participants learn to move more freely while gaining strength and flexibility through weights, resistance bands, and varied exercises.
           </p>
@@ -77,7 +98,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Line Dancing for Everyone (Beginners)</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Beginners)</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Learn basic steps and simple dances that promote fun, fitness, confidence, mental stimulation, and social connection.
           </p>
@@ -85,7 +106,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Line Dancing for Everyone (Returning Steppers)</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Returning Steppers)</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             A more advanced line dancing class that challenges memory, coordination, and confidence through multi-step routines while encouraging movement and fun.
           </p>
@@ -93,7 +114,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Arts &amp; Crafts</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Handmade Greeting Cards</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Handmade Greeting Cards</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
           </p>
@@ -101,7 +122,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance &amp; Fitness</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Salsa-Cise</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Salsa-Cise</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             A dance fitness class that uses Latin rhythms and movement to lift the spirit, reduce stress, and promote physical and mental well-being. No prior experience is required.
           </p>
@@ -109,7 +130,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Intermediate Spanish</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Intermediate Spanish</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Designed for members with a basic background in Spanish pronunciation, grammar, and vocabulary who want to continue developing their Spanish skills. <em>In person &amp; virtual.</em>
           </p>
@@ -117,7 +138,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Beginning Spanish</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Beginning Spanish</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Designed for members who want to begin learning how to speak Spanish fluently. <em>In person &amp; virtual.</em>
           </p>
@@ -125,7 +146,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Zumba</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Zumba</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             A popular exercise program that combines Latin music with choreographed dance movements to create an engaging aerobic workout.
           </p>
@@ -133,7 +154,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Wellness</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Yoga For Everyone</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Yoga For Everyone</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             A yoga class focused on uniting body, breath, and mind through mindful movement, relaxation, and meditation to support healthy aging and wellness.
           </p>
@@ -141,7 +162,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Book Club</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Kings Roundtable Osher Book Club</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Kings Roundtable Osher Book Club</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             An interest group centered around reading, discussion, and sharing a love of storytelling.
           </p>
@@ -149,7 +170,7 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
 
         <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Discussion</p>
-          <h3 class="text-xl font-bold text-[#02275A]">Knowledge More Abundantly</h3>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Knowledge More Abundantly</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Explores the nature of knowledge, truth, and misinformation through guided discussions and debates about sources of knowledge, personal biases, and distinguishing fact from myth.
           </p>
@@ -157,4 +178,97 @@ import CourseCatalogImg from '../images/CourseCatalog/1.png';
       </div>
     </div>
   </section>
+
+  <dialog id="catalog-modal" class="fixed inset-0 z-[100] h-full max-h-none w-full max-w-none bg-black/70 p-4 backdrop:bg-black/70 open:flex open:items-center open:justify-center">
+    <div class="relative w-full max-w-5xl rounded-2xl bg-white p-2 shadow-2xl sm:p-4">
+      <button onclick="document.getElementById('catalog-modal').close()" class="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#02275A] text-white shadow-lg transition hover:bg-[#004ADD]" aria-label="Close catalog">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="swiper [--swiper-navigation-size:24px] perspective-[1600px]" id="catalog-swiper">
+        <div class="swiper-wrapper">
+          {spreads.map((spread, idx) => (
+            <div class="swiper-slide !flex items-center justify-center">
+              <div class="flex w-full items-center justify-center gap-0 sm:gap-1 {spread.length === 1 ? 'max-w-[80%] sm:max-w-[60%]' : ''}">
+                {spread.map((img, sIdx) => (
+                  <div class="relative flex-1 {spread.length === 2 && sIdx === 0 ? 'pr-1 sm:pr-2' : ''} {spread.length === 2 && sIdx === 1 ? 'pl-1 sm:pl-2' : ''}">
+                    {spread.length === 2 && sIdx === 0 && <div class="absolute right-0 top-0 h-full w-1 bg-gradient-to-l from-slate-300/50 to-transparent pointer-events-none z-10" />}
+                    {spread.length === 2 && sIdx === 1 && <div class="absolute left-0 top-0 h-full w-1 bg-gradient-to-r from-slate-300/50 to-transparent pointer-events-none z-10" />}
+                    {sIdx === 0 && <div class="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/5 to-transparent" />}
+                    {sIdx === spread.length - 1 && spread.length > 1 && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent" />}
+                    <img
+                      src={img}
+                      alt={`OLLI Course Catalog page ${catalogImages.indexOf(img) + 1}`}
+                      class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
+                      style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="swiper-pagination !relative !mt-3"></div>
+        <div class="swiper-button-prev !text-[#004ADD]"></div>
+        <div class="swiper-button-next !text-[#004ADD]"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <style>
+    #catalog-swiper {
+      perspective: 1600px;
+    }
+    #catalog-swiper .swiper-slide {
+      transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease;
+    }
+    #catalog-swiper .swiper-slide-prev {
+      opacity: 0.4;
+      transform: perspective(1600px) rotateY(18deg) scale(0.92);
+      transform-origin: right center;
+    }
+    #catalog-swiper .swiper-slide-next {
+      opacity: 0.4;
+      transform: perspective(1600px) rotateY(-18deg) scale(0.92);
+      transform-origin: left center;
+    }
+    #catalog-swiper .swiper-slide-active {
+      opacity: 1;
+      transform: perspective(1600px) rotateY(0deg) scale(1);
+    }
+  </style>
+
+  <script>
+    import Swiper from 'swiper';
+    import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+
+    let swiperInstance = null;
+
+    window.openCatalog = function () {
+      const modal = document.getElementById('catalog-modal');
+      modal.showModal();
+
+      if (!swiperInstance) {
+        const el = document.getElementById('catalog-swiper');
+        if (el) {
+          swiperInstance = new Swiper(el, {
+            modules: [Navigation, Pagination, Keyboard],
+            slidesPerView: 1,
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            keyboard: { enabled: true },
+            grabCursor: true,
+          });
+        }
+      } else {
+        swiperInstance.update();
+      }
+    };
+  </script>
 </Layout>

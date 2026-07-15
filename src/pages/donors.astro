@@ -3,11 +3,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout>
-  <section class="bg-[#F5F8FD] py-24">
+  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-24">
+    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-4xl mx-auto">
         <p class="text-sm uppercase tracking-[0.3em] text-[#004ADD] font-semibold mb-4">Support & Giving</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#02275A] leading-tight tracking-[-0.02em]">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
           Our Inaugural Donors
         </h1>
         <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">

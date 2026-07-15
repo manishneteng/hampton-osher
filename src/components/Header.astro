@@ -1,12 +1,13 @@
 ﻿---
 // src/components/Header.astro
+import HULogo from '../images/HULogo.png';
 ---
 <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between gap-4 min-h-24 w-full py-3">
       <a href="/" class="flex flex-col">
-        <span class="text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-[#004ADD]">Hampton University</span>
-        <span class="mt-1 text-xl md:text-2xl font-extrabold text-[#02275A] tracking-tight">Osher Lifelong Learning Institute</span>
+        <img src={HULogo.src} alt="Hampton University" class="w-[130px] md:w-[170px] h-auto" />
+        <span class="mt-1 text-base md:text-lg font-display font-extrabold text-[#02275A] leading-snug">Osher Lifelong Learning Institute</span>
       </a>
 
       <details class="md:hidden ml-auto">
