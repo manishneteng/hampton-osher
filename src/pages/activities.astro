@@ -87,7 +87,7 @@ const vendors = [v1, v2, v3, v4, v5];
         <div class="hidden sm:grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {trips.map((img, i) => (
             <div class="cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
-              <img src={img.src} alt={`Trip photo ${i + 1}`} class="h-auto w-full object-contain" loading="lazy" />
+              <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
             </div>
           ))}
         </div>
@@ -95,7 +95,7 @@ const vendors = [v1, v2, v3, v4, v5];
           <div class="swiper-wrapper">
             {trips.map((img, i) => (
               <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
-                <img src={img.src} alt={`Trip photo ${i + 1}`} class="h-auto w-full object-contain" loading="lazy" />
+                <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
               </div>
             ))}
           </div>
