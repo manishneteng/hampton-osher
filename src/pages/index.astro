@@ -4,6 +4,12 @@ import VolunteerCard from '../components/VolunteerCard.astro';
 import OsherLogo from '../images/Osher20Logo.png';
 import CourseCatalogImg from '../images/CourseCatalog/1.png';
 import InterestGroupImg from '../images/CourseCatalog/8.png';
+import strip1 from '../images/Strip1.png';
+import strip2 from '../images/Strip2.png';
+import strip3 from '../images/Strip3.png';
+import strip4 from '../images/Strip4.jpg';
+import strip5 from '../images/Strip5.jpg';
+import strip6 from '../images/Strip6.png';
 ---
 
 <Layout>
@@ -27,41 +33,54 @@ import InterestGroupImg from '../images/CourseCatalog/8.png';
         </p>
 
         <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-[#02275A] px-8 py-4 text-lg font-semibold text-white transition hover:bg-[#004ADD]">
+          <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-[#02275A] px-8 py-4 text-lg font-semibold text-white shadow-sm transition hover:bg-[#004ADD] hover:shadow-lg hover:-translate-y-0.5">
             Explore Course Catalog
           </a>
-          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-[#02275A] bg-white px-8 py-4 text-lg font-semibold text-[#02275A] transition hover:bg-slate-50">
+          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-[#02275A] bg-white px-8 py-4 text-lg font-semibold text-[#02275A] shadow-sm transition hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5">
             Become a Member
           </a>
         </div>
       </div>
 
-      <div class="mt-12 w-full max-w-4xl">
-        <div class="overflow-hidden rounded-2xl border border-slate-200 shadow-sm">
-          <div class="aspect-[16/9] bg-slate-950">
-            <iframe
-              class="h-full w-full"
-              src="https://www.youtube.com/embed/OdqutEB3t3Q?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&loop=1&playlist=OdqutEB3t3Q&iv_load_policy=3&fs=0&showinfo=0"
-              title="OLLI at Hampton University video overview"
-              frameborder="0"
-              allow="autoplay; encrypted-media; picture-in-picture"
-              allowfullscreen
-              loading="lazy"
-            ></iframe>
-          </div>
+      <div class="relative mt-12 w-full">
+        <div class="aspect-[16/9] overflow-hidden rounded-2xl shadow-[0_0_0_1px_rgba(2,37,90,0.06)]">
+          <iframe
+            class="h-full w-full"
+            src="https://www.youtube.com/embed/OdqutEB3t3Q?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&loop=1&playlist=OdqutEB3t3Q&iv_load_policy=3&fs=0&showinfo=0"
+            title="OLLI at Hampton University video overview"
+            frameborder="0"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
         </div>
+        <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#EEF2F8] to-transparent"></div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="bg-white py-16">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A] tracking-tight">
-        Welcome to Your Next Chapter
-      </h2>
-      <p class="mt-6 text-lg text-slate-700 leading-relaxed">
-        OLLI's affordable adult education courses cater specifically to lifelong students who want to improve their skills, explore new concepts, and interact with engaging peers right in their community. There are no tests, no grades, and no homework—just learning for the pure joy of it.
-      </p>
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-center">
+        <div>
+          <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold">Welcome to Your Next Chapter</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A] leading-tight mt-4">
+            No tests. No grades.<br />
+            <span class="text-[#004ADD]">Just the joy of learning.</span>
+          </h2>
+          <p class="mt-6 text-lg text-slate-700 leading-relaxed">
+            OLLI's affordable adult education courses cater specifically to lifelong students who want to improve their skills, explore new concepts, and interact with engaging peers right in their community.
+          </p>
+        </div>
+        <div class="grid grid-cols-3 gap-3">
+          <img src={strip1.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip2.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip3.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip4.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip5.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip6.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -89,6 +108,31 @@ import InterestGroupImg from '../images/CourseCatalog/8.png';
     </div>
   </section>
 
+  <section class="bg-[#F8FAFC] py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 md:grid-cols-2 max-w-5xl mx-auto">
+        <blockquote class="relative">
+          <span class="text-6xl leading-none font-display font-bold text-[#004ADD]/20 select-none" aria-hidden="true">"</span>
+          <p class="relative -mt-4 text-xl md:text-2xl leading-snug font-display font-semibold text-[#02275A]">
+            OLLI has given me a community of curious minds and lifelong friends I never expected to find at this stage of life.
+          </p>
+          <footer class="mt-4 text-sm uppercase tracking-[0.25em] text-slate-500 font-semibold">
+            Margaret · Member since 2022
+          </footer>
+        </blockquote>
+        <blockquote class="relative">
+          <span class="text-6xl leading-none font-display font-bold text-[#004ADD]/20 select-none" aria-hidden="true">"</span>
+          <p class="relative -mt-4 text-xl md:text-2xl leading-snug font-display font-semibold text-[#02275A]">
+            The courses are engaging, affordable, and the instructors are phenomenal. I've taken everything from Spanish to line dancing.
+          </p>
+          <footer class="mt-4 text-sm uppercase tracking-[0.25em] text-slate-500 font-semibold">
+            Robert · Member since 2021
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
   <section class="bg-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-8 md:grid-cols-2">
@@ -109,7 +153,7 @@ import InterestGroupImg from '../images/CourseCatalog/8.png';
             Browse the course catalog to discover upcoming offerings and find classes that match your interests. When you're ready, register and begin your next learning adventure.
           </p>
           <div class="mt-auto pt-6">
-            <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+            <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A] hover:shadow-lg hover:-translate-y-0.5">
               Register for Courses
             </a>
           </div>
@@ -132,7 +176,7 @@ import InterestGroupImg from '../images/CourseCatalog/8.png';
             Browse the available Interest Groups and register to join a community that shares your passions.
           </p>
           <div class="mt-auto pt-6">
-            <a href="https://form.jotform.com/252124261320138" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+            <a href="https://form.jotform.com/252124261320138" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A] hover:shadow-lg hover:-translate-y-0.5">
               Register for Interest Groups
             </a>
           </div>
@@ -152,10 +196,10 @@ import InterestGroupImg from '../images/CourseCatalog/8.png';
               Becoming a member gives you full access to our course catalog, special events, and the chance to connect with hundreds of local learners. Registration is open for the upcoming semester.
             </p>
             <div class="mt-8 flex flex-wrap gap-4">
-              <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#02275A] shadow-lg transition hover:bg-slate-100">
+              <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#02275A] shadow-lg transition hover:bg-slate-100 hover:shadow-xl hover:-translate-y-0.5">
                 View Current Courses
               </a>
-              <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white bg-white/10 px-8 py-4 text-lg font-semibold text-white transition hover:bg-white/20">
+              <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-white bg-white/10 px-8 py-4 text-lg font-semibold text-white shadow-sm transition hover:bg-white/20 hover:shadow-lg hover:-translate-y-0.5">
                 Become a Member
               </a>
             </div>
