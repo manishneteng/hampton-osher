@@ -1,33 +1,30 @@
 ---
 // src/components/Footer.astro
 ---
-<footer id="contact" class="bg-[#02275A] text-white pt-16 pb-12 mt-20">
+<footer id="contact" class="bg-[#02275A] text-white pt-20 pb-12 mt-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-gray-700 pb-12 mb-8">
-      
-      {/* Contact Column */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 border-b border-slate-700 pb-12 mb-8">
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-[#BEBFC3] mb-4">Connect With Us</h4>
+        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Connect With Us</h4>
         <p class="text-lg font-bold mb-1">Alisha Beverley</p>
-        <p class="text-gray-400 mb-4 text-base">Director</p>
-        <a href="mailto:alisha.beverley@hamptonu.edu" class="text-white hover:text-[#004ADD] underline break-all text-lg font-medium block mb-2 transition-colors">
+        <p class="text-slate-300 mb-4 text-base">Director</p>
+        <a href="mailto:alisha.beverley@hamptonu.edu" class="text-white hover:text-[#93C5FD] underline break-all text-lg font-medium block mb-2 transition-colors">
           alisha.beverley@hamptonu.edu
         </a>
-        <p class="text-sm text-gray-400 mt-4 leading-relaxed">
+        <p class="text-sm text-slate-400 mt-4 leading-relaxed">
           Monday–Friday: 8:30am–5pm<br/>
           Closed for University holidays
         </p>
       </div>
 
-      {/* Addresses Column */}
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-[#BEBFC3] mb-4">Physical Address</h4>
-        <p class="text-gray-300 leading-relaxed text-base mb-6">
+        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Physical Address</h4>
+        <p class="text-slate-300 leading-relaxed text-base mb-6">
           1006-H Settlers Landing Road<br/>
           Hampton, Virginia 23669
         </p>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-[#BEBFC3] mb-4">Mailing Address</h4>
-        <p class="text-gray-300 leading-relaxed text-base">
+        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Mailing Address</h4>
+        <p class="text-slate-300 leading-relaxed text-base">
           Hampton University<br/>
           Osher Lifelong Learning Institute<br/>
           P.O. Box 6162<br/>
@@ -35,20 +32,18 @@
         </p>
       </div>
 
-      {/* Quick Links Column */}
       <div>
-        <h4 class="text-xs uppercase font-bold tracking-widest text-[#BEBFC3] mb-4">Quick Links</h4>
+        <h4 class="text-xs uppercase font-bold tracking-widest text-slate-400 mb-4">Quick Links</h4>
         <div class="flex flex-col space-y-3 text-base">
-          <a href="#" class="text-gray-300 hover:underline">National Resource Center</a>
-          <a href="#" class="text-gray-300 hover:underline">Accessibility Statement</a>
-          <a href="#" class="text-gray-300 hover:underline">Title IX</a>
+          <a href="https://www.hamptonu.edu/" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Hampton University</a>
+          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Membership Registration</a>
+          <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Course Registration</a>
+          <a href="https://www.osherfoundation.org/" target="_blank" rel="noreferrer" class="text-slate-300 hover:text-white transition">Osher Foundation</a>
         </div>
       </div>
-
     </div>
 
-    {/* Copyright Strip */}
-    <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-gray-400">
+    <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-slate-400">
       <p>&copy; {new Date().getFullYear()} Hampton University. All rights reserved.</p>
       <p class="mt-2 sm:mt-0">home.hamptonu.edu/osher</p>
     </div>

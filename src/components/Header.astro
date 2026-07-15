@@ -1,31 +1,142 @@
----
+﻿---
 // src/components/Header.astro
 ---
-<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+<header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/95 backdrop-blur-xl shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-24">
-      
-      {/* Brand Identity / Logo Area */}
-      <a href="/" class="flex flex-col group">
-        <span class="text-xs uppercase tracking-widest font-bold text-[#004ADD]">Hampton University</span>
-        <span class="text-xl md:text-2xl font-extrabold text-[#02275A] tracking-tight group-hover:text-[#004ADD] transition-colors">
-          Osher Lifelong Learning Institute
-        </span>
+    <div class="flex items-center justify-between gap-4 min-h-24 w-full py-3">
+      <a href="/" class="flex flex-col">
+        <span class="text-[0.7rem] font-semibold uppercase tracking-[0.45em] text-[#004ADD]">Hampton University</span>
+        <span class="mt-1 text-xl md:text-2xl font-extrabold text-[#02275A] tracking-tight">Osher Lifelong Learning Institute</span>
       </a>
 
-      {/* Main Navigation Links */}
-      <nav class="hidden md:flex items-center space-x-8">
-        <a href="#about" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">About</a>
-        <a href="#get-involved" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Volunteer</a>
-        <a href="/courses" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Registration</a>
-        <a href="#contact" class="font-semibold text-[#353A3C] hover:text-[#004ADD] transition-colors py-2 text-lg">Contact</a>
-        
-        {/* Prominent Call to Action */}
-        <a href="#" class="px-6 py-3 bg-[#004ADD] text-white font-bold rounded-xl shadow-md hover:bg-[#02275A] transition-all text-center text-lg min-w-[140px]">
-          Make A Gift
-        </a>
+      <details class="md:hidden ml-auto">
+        <summary class="flex items-center justify-between rounded-full border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm">
+          Menu
+          <span class="text-[#004ADD]">▾</span>
+        </summary>
+        <nav class="fixed top-24 left-4 right-4 z-50 max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200 bg-white p-5 shadow-lg space-y-4">
+          <details class="group" data-nav-dropdown>
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">
+              OLLI
+              <span class="text-[#004ADD]">▾</span>
+            </summary>
+            <div class="mt-3 space-y-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+              <a href="/about" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">About</a>
+              <a href="/faq" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Frequently Asked Questions</a>
+              <a href="https://sps.northwestern.edu/oshernrc/" target="_blank" rel="noopener noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">National Resource Center</a>
+            </div>
+          </details>
+          <a href="/#get-involved" class="block text-sm font-semibold uppercase tracking-[0.18em] text-slate-800 hover:text-[#004ADD]">Volunteering</a>
+          <a href="#contact" class="block text-sm font-semibold uppercase tracking-[0.18em] text-slate-800 hover:text-[#004ADD]">Contact</a>
+          <details class="group" data-nav-dropdown>
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">
+              Membership
+              <span class="text-[#004ADD]">▾</span>
+            </summary>
+            <div class="mt-3 space-y-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+              <a href="/courses" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Courses</a>
+              <a href="/activities" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Activities & Travel</a>
+              <a href="https://form.jotform.com/240940605711147" target="_blank" rel="noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Movie Day Sign Up</a>
+              <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Annual Membership Registration</a>
+              <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Course Registration</a>
+              <a href="https://form.jotform.com/252124261320138" target="_blank" rel="noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Osher Interest Group Sign Up</a>
+            </div>
+          </details>
+          <details class="group" data-nav-dropdown>
+            <summary class="inline-flex w-full cursor-pointer list-none items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-sm font-semibold leading-tight text-white shadow-sm transition hover:bg-[#02275A] [&::-webkit-details-marker]:hidden">
+              Make A Gift
+            </summary>
+            <div class="mt-3 space-y-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+              <a href="/giving" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Ways to Give</a>
+              <a href="https://form.jotform.com/240354605024143" target="_blank" rel="noopener noreferrer" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Donate</a>
+              <a href="/donors" class="block rounded-2xl px-4 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Our Inaugural Donors</a>
+            </div>
+          </details>
+        </nav>
+      </details>
+
+      <nav class="hidden md:flex items-center gap-6 ml-auto pr-0">
+        <details class="group relative" data-nav-dropdown>
+          <summary class="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">
+            OLLI
+            <span class="text-[#004ADD]">▾</span>
+          </summary>
+          <div class="absolute left-0 top-full z-50 mt-3 w-72 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg group-open:block">
+            <a href="/about" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">About</a>
+            <a href="/faq" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Frequently Asked Questions</a>
+            <a href="https://sps.northwestern.edu/oshernrc/" target="_blank" rel="noopener noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">National Resource Center</a>
+          </div>
+        </details>
+        <a href="/#get-involved" class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">Volunteering</a>
+        <a href="#contact" class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">Contact</a>
+        <details class="group relative" data-nav-dropdown>
+          <summary class="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-slate-700 hover:text-[#004ADD] transition">
+            Membership
+            <span class="text-[#004ADD]">▾</span>
+          </summary>
+          <div class="absolute right-0 top-full z-50 mt-3 w-72 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg group-open:block">
+            <a href="/courses" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Courses</a>
+            <a href="/activities" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Activities & Travel</a>
+            <a href="https://form.jotform.com/240940605711147" target="_blank" rel="noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Movie Day Sign Up</a>
+            <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Annual Membership Registration</a>
+            <a href="https://form.jotform.com/230106409375148" target="_blank" rel="noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Course Registration</a>
+            <a href="https://form.jotform.com/252124261320138" target="_blank" rel="noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Osher Interest Group Sign Up</a>
+          </div>
+        </details>
+        <details class="group relative" data-nav-dropdown>
+          <summary class="inline-flex cursor-pointer list-none items-center justify-center rounded-full bg-[#004ADD] px-5 py-3 text-sm font-semibold leading-tight text-white shadow-sm transition hover:bg-[#02275A] [&::-webkit-details-marker]:hidden">
+            Make A Gift
+          </summary>
+          <div class="absolute right-0 top-full z-50 mt-3 w-56 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg group-open:block">
+            <a href="/giving" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Ways to Give</a>
+            <a href="https://form.jotform.com/240354605024143" target="_blank" rel="noopener noreferrer" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Donate</a>
+            <a href="/donors" class="block rounded-2xl px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50 hover:text-[#004ADD]">Our Inaugural Donors</a>
+          </div>
+        </details>
       </nav>
-      
     </div>
   </div>
+  <script>
+    const dropdowns = Array.from(document.querySelectorAll('details[data-nav-dropdown]'));
+    const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+    const closeAllDropdowns = () => {
+      dropdowns.forEach((dropdown) => dropdown.removeAttribute('open'));
+    };
+
+    dropdowns.forEach((dropdown) => {
+      let hoverTimer = null;
+
+      dropdown.addEventListener('toggle', () => {
+        if (dropdown.open) {
+          dropdowns.forEach((other) => {
+            if (other !== dropdown) {
+              other.removeAttribute('open');
+            }
+          });
+        }
+      });
+
+      dropdown.addEventListener('mouseenter', () => {
+        if (isDesktop()) {
+          clearTimeout(hoverTimer);
+          dropdown.setAttribute('open', '');
+        }
+      });
+
+      dropdown.addEventListener('mouseleave', () => {
+        if (isDesktop()) {
+          hoverTimer = setTimeout(() => {
+            dropdown.removeAttribute('open');
+          }, 100);
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('header')) {
+        closeAllDropdowns();
+      }
+    });
+  </script>
 </header>

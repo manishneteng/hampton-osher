@@ -1,31 +1,160 @@
----
+﻿---
 import Layout from '../layouts/Layout.astro';
+import CourseCatalogImg from '../images/CourseCatalog/1.png';
 ---
 
 <Layout>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-4xl font-extrabold text-[#02275A] mb-8">Course Catalog</h1>
-    <p class="text-lg text-[#353A3C] mb-12">Browse our upcoming selection of non-credit courses for the new semester.</p>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {/* Example Course Cards */}
-      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="text-xl font-bold text-[#02275A] mb-2">Digital Photography</h3>
-        <p class="text-gray-600 mb-4">Master your camera settings and composition techniques.</p>
-        <span class="text-sm font-bold text-[#004ADD]">Starts: Aug 15</span>
-      </div>
-      
-      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="text-xl font-bold text-[#02275A] mb-2">History of Hampton</h3>
-        <p class="text-gray-600 mb-4">Explore the rich heritage of the Peninsula.</p>
-        <span class="text-sm font-bold text-[#004ADD]">Starts: Sept 01</span>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-        <h3 class="text-xl font-bold text-[#02275A] mb-2">Creative Writing</h3>
-        <p class="text-gray-600 mb-4">Develop your unique voice through guided prompts.</p>
-        <span class="text-sm font-bold text-[#004ADD]">Starts: Sept 10</span>
+  <section class="bg-[#F5F8FD] py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-4xl mx-auto">
+        <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold mb-4">Course Catalog</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#02275A] leading-tight tracking-[-0.02em]">
+          Welcome to OLLI HU
+        </h1>
+        <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
+          We're thrilled to have you here! At OLLI, we believe that learning never stops. Whether you're exploring a new passion, diving deeper into a lifelong interest, or simply looking to connect with a vibrant community of fellow learners, you've come to the right place.
+        </p>
+        <p class="mt-4 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
+          Our courses are designed to engage, inspire, and empower—no tests, no grades, just the joy of learning for learning's sake. From history and science to art, literature, and wellness, there's something here for everyone.
+        </p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="bg-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
+        <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+          <img
+            src={CourseCatalogImg.src}
+            alt="OLLI Course Catalog cover"
+            class="mx-auto h-auto w-full max-h-[480px] rounded-2xl object-contain"
+            loading="lazy"
+          />
+          <div class="mt-5 text-center">
+            <a href="#" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+              Click here to view the course catalog
+            </a>
+          </div>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
+          <h2 class="text-3xl font-extrabold text-[#02275A]">Ready to discover your next adventure?</h2>
+          <p class="mt-4 text-lg leading-relaxed text-slate-700">
+            Browse our courses, meet our incredible instructors, and join a community where curiosity knows no age limit.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="mailto:alisha.beverley@hamptonu.edu" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+              Email Alisha
+            </a>
+            <a href="tel:7577275434" class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50">
+              Call 757-727-5434
+            </a>
+          </div>
+          <p class="mt-6 text-base leading-relaxed text-slate-600">
+            For questions or assistance, please call <strong class="text-[#02275A]">757-727-5434</strong> or email <strong class="text-[#02275A]">Alisha Beverley</strong> at <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#F8FAFC] py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold text-[#02275A]">Current Courses</h2>
+        <p class="mt-4 text-lg text-slate-700">Engaging, accessible, and member-led learning experiences designed for adults 50 and better.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Move Your Body: Fitness</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            An energetic weightlifting and strength-training class where participants learn to move more freely while gaining strength and flexibility through weights, resistance bands, and varied exercises.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Line Dancing for Everyone (Beginners)</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Learn basic steps and simple dances that promote fun, fitness, confidence, mental stimulation, and social connection.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Line Dancing for Everyone (Returning Steppers)</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            A more advanced line dancing class that challenges memory, coordination, and confidence through multi-step routines while encouraging movement and fun.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Arts &amp; Crafts</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Handmade Greeting Cards</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance &amp; Fitness</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Salsa-Cise</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            A dance fitness class that uses Latin rhythms and movement to lift the spirit, reduce stress, and promote physical and mental well-being. No prior experience is required.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Intermediate Spanish</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Designed for members with a basic background in Spanish pronunciation, grammar, and vocabulary who want to continue developing their Spanish skills. <em>In person &amp; virtual.</em>
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Beginning Spanish</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Designed for members who want to begin learning how to speak Spanish fluently. <em>In person &amp; virtual.</em>
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Zumba</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            A popular exercise program that combines Latin music with choreographed dance movements to create an engaging aerobic workout.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Wellness</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Yoga For Everyone</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            A yoga class focused on uniting body, breath, and mind through mindful movement, relaxation, and meditation to support healthy aging and wellness.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Book Club</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Kings Roundtable Osher Book Club</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            An interest group centered around reading, discussion, and sharing a love of storytelling.
+          </p>
+        </div>
+
+        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Discussion</p>
+          <h3 class="text-xl font-bold text-[#02275A]">Knowledge More Abundantly</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Explores the nature of knowledge, truth, and misinformation through guided discussions and debates about sources of knowledge, personal biases, and distinguishing fact from myth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>
