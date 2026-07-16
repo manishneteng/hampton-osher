@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CoursesBG from '../images/CoursesBG.png';
 
 const catalogImages = Object.entries(
   import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
@@ -17,21 +18,38 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 ---
 
 <Layout>
-  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-24">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-4xl mx-auto">
-        <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold mb-4">Course Catalog</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
+  <!-- ====== Hero ====== -->
+  <section class="relative flex min-h-[70vh] items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img
+        src={CoursesBG.src}
+        alt="OLLI course catalog"
+        class="h-full w-full object-cover blur-sm scale-110"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto w-full max-w-4xl px-4 pb-20 pt-36 text-center sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-sm uppercase tracking-[0.35em] text-blue-200 font-semibold mb-4">Course Catalog</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
           Welcome to OLLI HU
         </h1>
-        <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
+        <p class="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
           We're thrilled to have you here! At OLLI, we believe that learning never stops. Whether you're exploring a new passion, diving deeper into a lifelong interest, or simply looking to connect with a vibrant community of fellow learners, you've come to the right place.
         </p>
-        <p class="mt-4 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
+        <p class="mt-4 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
           Our courses are designed to engage, inspire, and empower—no tests, no grades, just the joy of learning for learning's sake. From history and science to art, literature, and wellness, there's something here for everyone.
         </p>
       </div>
+    </div>
+
+    <!-- Curved bottom separator -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#FFFFFF">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      </svg>
     </div>
   </section>
 

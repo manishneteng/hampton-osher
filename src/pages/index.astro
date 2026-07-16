@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import VolunteerCard from '../components/VolunteerCard.astro';
 import OsherLogo from '../images/Osher20Logo.png';
+import HeroBG from '../images/HeroBG.png';
 import CourseCatalogImg from '../images/CourseCatalog/1.png';
 import InterestGroupImg from '../images/CourseCatalog/8.png';
 import strip1 from '../images/Strip1.png';
@@ -27,45 +28,73 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 ---
 
 <Layout>
-  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-12 lg:py-16">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.35]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
-      <div class="max-w-4xl">
-        <img
-          src={OsherLogo.src}
-          alt="Osher Lifelong Learning Institute logo"
-          class="mx-auto mb-8 h-auto w-full max-w-[140px] sm:max-w-[180px] lg:max-w-[220px]"
-        />
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-display text-[#02275A] leading-tight tracking-[-0.02em]">
-          50+ Living. Learning. Loving It.
-        </h1>
-        <p class="mt-4 text-lg font-semibold text-[#004ADD]">
-          Curiosity Never Retires.
-        </p>
-        <p class="mt-8 text-lg text-slate-700 leading-relaxed">
-          The Osher Lifelong Learning Institute (OLLI) at Hampton University is a membership-driven community offering affordable, non-credit courses to mature adult learners. Expand your mind, explore new ideas, and build lasting friendships.
-        </p>
+  <!-- ====== Hero ====== -->
+  <section class="relative flex min-h-[90vh] items-center overflow-hidden">
+    <!-- Background image with blur -->
+    <div class="absolute inset-0">
+      <img
+        src={HeroBG.src}
+        alt="OLLI members engaged in a lifelong learning lecture"
+        class="h-full w-full object-cover blur-sm scale-110"
+      />
+      <!-- Stronger overlay for text pop -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <!-- Brand glow -->
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
 
-        <div class="mt-10 flex flex-col items-center gap-3">
-          <button id="open-catalog-btn" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#02275A] px-10 py-4 text-lg font-semibold text-white shadow-md transition hover:bg-[#004ADD] hover:shadow-lg hover:-translate-y-0.5">
-            Explore Course Catalog
-          </button>
-          <p class="text-sm text-slate-500">
-            <span class="font-semibold text-[#02275A]">Annual membership is $60/year</span>
-            <a href="/faq#membership" class="ml-2 font-medium text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">Learn more →</a>
-          </p>
-          <p class="text-sm text-slate-500">
-            No tests, no grades, no pressure
-          </p>
-          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#004ADD] transition hover:text-[#02275A]">
-            Ready to join? Become a Member
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </a>
+    <div class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-24 pt-32 text-center sm:px-6 lg:px-8">
+      <img
+        src={OsherLogo.src}
+        alt="Osher Lifelong Learning Institute logo"
+        class="mx-auto mb-8 h-auto w-full max-w-[130px] brightness-0 invert sm:max-w-[160px] lg:max-w-[200px]"
+        style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 2px rgba(255,255,255,0.15)) brightness(0) invert(1);"
+      />
+
+      <h1 class="text-5xl font-black font-display leading-tight tracking-[-0.02em] text-white md:text-7xl lg:text-8xl" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
+        50+ Living. Learning. Loving It.
+      </h1>
+
+      <p class="mt-5 text-lg font-semibold text-blue-200 sm:text-xl">
+        Curiosity Never Retires.
+      </p>
+
+      <p class="mt-8 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">
+        The Osher Lifelong Learning Institute (OLLI) at Hampton University is a membership-driven community offering affordable, non-credit courses to mature adult learners. Expand your mind, explore new ideas, and build lasting friendships.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center gap-4">
+        <button id="open-catalog-btn" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-white px-10 py-4 text-lg font-semibold text-[#02275A] shadow-lg transition hover:bg-blue-50 hover:shadow-xl hover:-translate-y-0.5">
+          Explore Course Catalog
+        </button>
+
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+          <span class="font-semibold text-white/90">Annual membership is $60/year</span>
+          <a href="/faq#membership" class="font-medium text-blue-200 underline decoration-1 underline-offset-2 transition hover:text-white">Learn more →</a>
         </div>
-      </div>
 
-      <div class="relative mt-12 w-full">
-        <div class="aspect-[16/9] overflow-hidden rounded-xl shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/5">
+        <p class="text-sm text-white/60">No tests, no grades, no pressure</p>
+
+        <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-200 transition hover:text-white">
+          Ready to join? Become a Member
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Curved bottom separator -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#F5F8FD">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ====== Video section ====== -->
+  <section class="relative bg-[#F5F8FD] pb-16 pt-8">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+      <div class="relative overflow-hidden rounded-xl shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/5">
+        <div class="aspect-[16/9]">
           <iframe
             class="h-full w-full"
             src="https://www.youtube.com/embed/OdqutEB3t3Q?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&loop=1&playlist=OdqutEB3t3Q&iv_load_policy=3&fs=0&showinfo=0"
