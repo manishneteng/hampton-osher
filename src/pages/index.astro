@@ -10,11 +10,25 @@ import strip3 from '../images/Strip3.png';
 import strip4 from '../images/Strip4.jpg';
 import strip5 from '../images/Strip5.jpg';
 import strip6 from '../images/Strip6.png';
+
+const catalogImages = Object.entries(
+  import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
+)
+  .sort(([a], [b]) => {
+    const numA = parseInt(a.match(/(\d+)\.png$/)?.[1] || '0');
+    const numB = parseInt(b.match(/(\d+)\.png$/)?.[1] || '0');
+    return numA - numB;
+  })
+  .map(([, src]) => src);
+
+const isCover = (i) => i === 0;
+const isLastInLeftPair = (i) => i > 0 && i % 2 === 1;
+const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 ---
 
 <Layout>
   <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-12 lg:py-16">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
+    <div class="pointer-events-none absolute inset-0 opacity-[0.35]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
       <div class="max-w-4xl">
         <img
@@ -25,36 +39,41 @@ import strip6 from '../images/Strip6.png';
         <h1 class="text-5xl md:text-7xl lg:text-8xl font-black font-display text-[#02275A] leading-tight tracking-[-0.02em]">
           50+ Living. Learning. Loving It.
         </h1>
-        <p class="mt-4 text-sm uppercase tracking-[0.3em] font-semibold text-[#004ADD]">
+        <p class="mt-4 text-lg font-semibold text-[#004ADD]">
           Curiosity Never Retires.
         </p>
         <p class="mt-8 text-lg text-slate-700 leading-relaxed">
           The Osher Lifelong Learning Institute (OLLI) at Hampton University is a membership-driven community offering affordable, non-credit courses to mature adult learners. Expand your mind, explore new ideas, and build lasting friendships.
         </p>
 
-        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a href="/courses" class="inline-flex items-center justify-center rounded-full bg-[#02275A] px-8 py-4 text-lg font-semibold text-white shadow-sm transition hover:bg-[#004ADD] hover:shadow-lg hover:-translate-y-0.5">
+        <div class="mt-10 flex flex-col items-center gap-3">
+          <button id="open-catalog-btn" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#02275A] px-10 py-4 text-lg font-semibold text-white shadow-md transition hover:bg-[#004ADD] hover:shadow-lg hover:-translate-y-0.5">
             Explore Course Catalog
-          </a>
-          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-[#02275A] bg-white px-8 py-4 text-lg font-semibold text-[#02275A] shadow-sm transition hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5">
-            Become a Member
+          </button>
+          <p class="text-sm text-slate-500">
+            <span class="font-semibold text-[#02275A]">Annual membership is $60/year</span>
+            <a href="/faq#membership" class="ml-2 font-medium text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">Learn more →</a>
+          </p>
+          <p class="text-sm text-slate-500">
+            No tests, no grades, no pressure
+          </p>
+          <a href="https://form.jotform.com/213249037988164" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-[#004ADD] transition hover:text-[#02275A]">
+            Ready to join? Become a Member
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
 
       <div class="relative mt-12 w-full">
-        <div class="aspect-[16/9] overflow-hidden rounded-2xl shadow-[0_0_0_1px_rgba(2,37,90,0.06)]">
+        <div class="aspect-[16/9] overflow-hidden rounded-xl shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/5">
           <iframe
             class="h-full w-full"
             src="https://www.youtube.com/embed/OdqutEB3t3Q?rel=0&autoplay=1&mute=1&controls=0&modestbranding=1&playsinline=1&loop=1&playlist=OdqutEB3t3Q&iv_load_policy=3&fs=0&showinfo=0"
             title="OLLI at Hampton University video overview"
-            frameborder="0"
             allow="autoplay; encrypted-media; picture-in-picture"
             allowfullscreen
-            loading="lazy"
           ></iframe>
         </div>
-        <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#EEF2F8] to-transparent"></div>
       </div>
     </div>
   </section>
@@ -63,22 +82,22 @@ import strip6 from '../images/Strip6.png';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[1fr_1.3fr] items-center">
         <div>
-          <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold">Welcome to Your Next Chapter</p>
-          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A] leading-tight mt-4">
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-[#02275A] leading-tight">
             No tests. No grades.<br />
             <span class="text-[#004ADD]">Just the joy of learning.</span>
           </h2>
+          <p class="mt-2 text-base font-semibold text-[#004ADD]">Welcome to your next chapter.</p>
           <p class="mt-6 text-lg text-slate-700 leading-relaxed">
             OLLI's affordable adult education courses cater specifically to lifelong students who want to improve their skills, explore new concepts, and interact with engaging peers right in their community.
           </p>
         </div>
         <div class="grid grid-cols-3 gap-3">
-          <img src={strip1.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
-          <img src={strip2.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
-          <img src={strip3.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
-          <img src={strip4.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
-          <img src={strip5.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
-          <img src={strip6.src} alt="" class="rounded-2xl object-cover h-32 md:h-40 w-full" loading="lazy" />
+          <img src={strip1.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={strip2.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={strip3.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={strip4.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={strip5.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={strip6.src} alt="" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
         </div>
       </div>
     </div>
@@ -116,8 +135,8 @@ import strip6 from '../images/Strip6.png';
           <p class="relative -mt-4 text-xl md:text-2xl leading-snug font-display font-semibold text-[#02275A]">
             OLLI has given me a community of curious minds and lifelong friends I never expected to find at this stage of life.
           </p>
-          <footer class="mt-4 text-sm uppercase tracking-[0.25em] text-slate-500 font-semibold">
-            Margaret · Member since 2022
+          <footer class="mt-4 text-sm text-slate-500">
+            Margaret — Member since 2022
           </footer>
         </blockquote>
         <blockquote class="relative">
@@ -125,8 +144,8 @@ import strip6 from '../images/Strip6.png';
           <p class="relative -mt-4 text-xl md:text-2xl leading-snug font-display font-semibold text-[#02275A]">
             The courses are engaging, affordable, and the instructors are phenomenal. I've taken everything from Spanish to line dancing.
           </p>
-          <footer class="mt-4 text-sm uppercase tracking-[0.25em] text-slate-500 font-semibold">
-            Robert · Member since 2021
+          <footer class="mt-4 text-sm text-slate-500">
+            Robert — Member since 2021
           </footer>
         </blockquote>
       </div>
@@ -136,8 +155,8 @@ import strip6 from '../images/Strip6.png';
   <section class="bg-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-8 md:grid-cols-2">
-        <div class="flex flex-col rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-8">
-          <div class="overflow-hidden rounded-2xl mb-6">
+        <div class="flex flex-col rounded-xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#004ADD] hover:shadow-md sm:p-8">
+          <div class="overflow-hidden rounded-xl mb-6">
             <img
               src={CourseCatalogImg.src}
               alt="Course catalog preview"
@@ -159,8 +178,8 @@ import strip6 from '../images/Strip6.png';
           </div>
         </div>
 
-        <div class="flex flex-col rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-8">
-          <div class="overflow-hidden rounded-2xl mb-6">
+        <div class="flex flex-col rounded-xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#004ADD] hover:shadow-md sm:p-8">
+          <div class="overflow-hidden rounded-xl mb-6">
             <img
               src={InterestGroupImg.src}
               alt="Interest groups preview"
@@ -187,10 +206,10 @@ import strip6 from '../images/Strip6.png';
 
   <section id="registration" class="bg-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="overflow-hidden rounded-[24px] bg-gradient-to-br from-[#02275A] to-[#004ADD] p-8 shadow-[0_26px_70px_rgba(2,45,114,0.14)] sm:p-14">
+        <div class="overflow-hidden rounded-xl bg-gradient-to-br from-[#02275A] to-[#004ADD] p-8 shadow-xl sm:p-14">
         <div class="grid gap-10 lg:grid-cols-[1.8fr_1fr] items-center">
           <div class="text-white">
-            <p class="text-sm uppercase tracking-[0.35em] text-slate-200">Join OLLI</p>
+            <p class="text-sm font-medium text-slate-300">Join OLLI</p>
             <h2 class="mt-4 text-3xl sm:text-4xl font-extrabold font-display">Ready to join our community?</h2>
             <p class="mt-5 text-lg leading-relaxed text-slate-200/90">
               Becoming a member gives you full access to our course catalog, special events, and the chance to connect with hundreds of local learners. Registration is open for the upcoming semester.
@@ -204,7 +223,7 @@ import strip6 from '../images/Strip6.png';
               </a>
             </div>
           </div>
-          <div class="rounded-2xl bg-white p-8 shadow-2xl">
+          <div class="rounded-xl bg-white p-8 shadow-2xl">
             <h3 class="text-xl font-bold font-display text-[#02275A]">Quick Stats</h3>
             <ul class="mt-6 space-y-4 text-slate-700">
               <li class="flex gap-4 text-base leading-7"><svg class="mt-0.5 h-6 w-6 shrink-0 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" /></svg><span>50+ Unique Courses</span></li>
@@ -216,4 +235,124 @@ import strip6 from '../images/Strip6.png';
       </div>
     </div>
   </section>
+  <dialog id="catalog-modal" class="fixed inset-0 z-[100] h-full max-h-none w-full max-w-none bg-black/70 p-4 backdrop:bg-black/70 open:flex open:items-center open:justify-center">
+    <div class="relative w-full max-w-5xl rounded-2xl bg-white p-2 shadow-2xl sm:p-4">
+      <button onclick="document.getElementById('catalog-modal').close()" class="absolute -right-3 -top-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#02275A] text-white shadow-lg transition hover:bg-[#004ADD]" aria-label="Close catalog">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="swiper [--swiper-navigation-size:24px]" id="catalog-swiper">
+        <div class="swiper-wrapper">
+          {catalogImages.map((img, idx) => (
+            <div class="swiper-slide !flex items-center justify-center {isCover(idx) ? 'cover-slide' : ''}">
+              <div class="flex w-full items-center justify-center {isCover(idx) ? 'max-w-[80%]' : ''}">
+                <div class="relative flex-1 {!isCover(idx) && isLastInLeftPair(idx) ? 'pr-1 md:pr-2' : ''} {!isCover(idx) && isFirstInRightPair(idx) ? 'pl-1 md:pl-2' : ''}">
+                  {!isCover(idx) && isLastInLeftPair(idx) && <div class="pointer-events-none absolute inset-y-0 right-0 w-3 bg-gradient-to-l from-black/5 to-transparent z-10" />}
+                  {!isCover(idx) && isFirstInRightPair(idx) && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent z-10" />}
+                  <img
+                    src={img}
+                    alt={`OLLI Course Catalog page $${idx + 1}`}
+                    class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
+                    style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="swiper-pagination !relative !mt-3"></div>
+        <div class="swiper-button-prev !text-[#004ADD]"></div>
+        <div class="swiper-button-next !text-[#004ADD]"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <style>
+    #catalog-swiper {
+      perspective: 1600px;
+    }
+    #catalog-swiper .swiper-slide {
+      transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.4s ease;
+    }
+    #catalog-swiper.md\:two-up {
+      perspective: 1600px;
+    }
+    #catalog-swiper.md\:two-up .swiper-slide-prev {
+      opacity: 0.4;
+      transform: perspective(1600px) rotateY(18deg) scale(0.92);
+      transform-origin: right center;
+    }
+    #catalog-swiper.md\:two-up .swiper-slide-next {
+      opacity: 0.4;
+      transform: perspective(1600px) rotateY(-18deg) scale(0.92);
+      transform-origin: left center;
+    }
+    #catalog-swiper.md\:two-up .swiper-slide-active {
+      opacity: 1;
+      transform: perspective(1600px) rotateY(0deg) scale(1);
+    }
+    #catalog-swiper:not(.md\:two-up) .swiper-slide {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    #catalog-swiper:not(.md\:two-up) .swiper-slide img {
+      max-height: 85vh;
+    }
+    #catalog-swiper.md\:two-up .cover-slide > div {
+      max-width: none !important;
+    }
+  </style>
+
+  <script>
+    import Swiper from 'swiper';
+    import { Navigation, Pagination, Keyboard } from 'swiper/modules';
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+
+    let swiperInstance = null;
+
+    document.getElementById('open-catalog-btn')?.addEventListener('click', function () {
+      const modal = document.getElementById('catalog-modal');
+      modal.showModal();
+
+      if (!swiperInstance) {
+        const el = document.getElementById('catalog-swiper');
+        if (el) {
+          const isDesktop = () => window.innerWidth >= 768;
+
+          swiperInstance = new Swiper(el, {
+            modules: [Navigation, Pagination, Keyboard],
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 0,
+            navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            keyboard: { enabled: true },
+            grabCursor: true,
+            breakpoints: {
+              768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+                spaceBetween: 0,
+              },
+            },
+            on: {
+              init: function () {
+                this.el.classList.toggle('md\\:two-up', isDesktop());
+              },
+              resize: function () {
+                this.el.classList.toggle('md\\:two-up', isDesktop());
+              },
+            },
+          });
+        }
+      } else {
+        swiperInstance.update();
+      }
+    });
+  </script>
 </Layout>

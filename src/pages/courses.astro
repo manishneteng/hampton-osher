@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
 
 const catalogImages = Object.entries(
@@ -38,7 +38,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
   <section class="bg-white py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
-        <div class="rounded-[24px] border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6">
+        <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6">
           <img
             src={catalogImages[0]}
             alt="OLLI Course Catalog cover"
@@ -52,7 +52,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </div>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-10">
+        <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-10">
           <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Ready to discover your next adventure?</h2>
           <p class="mt-4 text-lg leading-relaxed text-slate-700">
             Browse our courses, meet our incredible instructors, and join a community where curiosity knows no age limit.
@@ -80,16 +80,16 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
         <p class="mt-4 text-lg text-slate-700">Engaging, accessible, and member-led learning experiences designed for adults 50 and better.</p>
       </div>
 
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Fitness &amp; Dance</h3>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Move Your Body: Fitness</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             An energetic weightlifting and strength-training class where participants learn to move more freely while gaining strength and flexibility through weights, resistance bands, and varied exercises.
           </p>
         </div>
-
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Beginners)</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
@@ -97,7 +97,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Returning Steppers)</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
@@ -105,15 +105,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Arts &amp; Crafts</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Handmade Greeting Cards</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
-            Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
-          </p>
-        </div>
-
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance &amp; Fitness</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Salsa-Cise</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
@@ -121,7 +113,29 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Zumba</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            A popular exercise program that combines Latin music with choreographed dance movements to create an engaging aerobic workout.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Arts &amp; Crafts</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Arts &amp; Crafts</p>
+          <h3 class="text-xl font-bold font-display text-[#02275A]">Handmade Greeting Cards</h3>
+          <p class="mt-3 text-base leading-relaxed text-slate-700">
+            Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Languages</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Intermediate Spanish</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
@@ -129,31 +143,29 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Beginning Spanish</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             Designed for members who want to begin learning how to speak Spanish fluently. <em>In person &amp; virtual.</em>
           </p>
         </div>
+      </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Zumba</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
-            A popular exercise program that combines Latin music with choreographed dance movements to create an engaging aerobic workout.
-          </p>
-        </div>
-
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Wellness</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Wellness</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Yoga For Everyone</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
             A yoga class focused on uniting body, breath, and mind through mindful movement, relaxation, and meditation to support healthy aging and wellness.
           </p>
         </div>
+      </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Book Club &amp; Discussion</h3>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Book Club</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Kings Roundtable Osher Book Club</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
@@ -161,7 +173,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
 
-        <div class="rounded-[24px] border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Discussion</p>
           <h3 class="text-xl font-bold font-display text-[#02275A]">Knowledge More Abundantly</h3>
           <p class="mt-3 text-base leading-relaxed text-slate-700">
