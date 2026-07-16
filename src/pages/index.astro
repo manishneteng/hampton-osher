@@ -29,7 +29,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 
 <Layout>
   <!-- ====== Hero ====== -->
-  <section class="relative flex min-h-[90vh] items-center overflow-hidden">
+  <section class="relative flex min-h-[80vh] items-center overflow-hidden lg:min-h-[90vh]">
     <!-- Background image with blur -->
     <div class="absolute inset-0">
       <img
@@ -43,7 +43,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
     </div>
 
-    <div class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-24 pt-32 text-center sm:px-6 lg:px-8">
+    <div class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 lg:px-8">
       <img
         src={OsherLogo.src}
         alt="Osher Lifelong Learning Institute logo"
@@ -84,14 +84,14 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 
     <!-- Curved bottom separator -->
     <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
-      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#F5F8FD">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#F3F8FC">
         <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
       </svg>
     </div>
   </section>
 
   <!-- ====== Video section ====== -->
-  <section class="relative bg-[#F5F8FD] pb-16 pt-8">
+  <section class="relative bg-[#F3F8FC] pb-16 pt-8">
     <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
       <div class="relative overflow-hidden rounded-xl shadow-xl shadow-slate-900/10 ring-1 ring-slate-900/5">
         <div class="aspect-[16/9]">
