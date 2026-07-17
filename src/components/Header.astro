@@ -99,6 +99,7 @@ import HULogo from '../images/HULogo.png';
   </div>
   <script>
     const dropdowns = Array.from(document.querySelectorAll('details[data-nav-dropdown]'));
+    const mobileMenu = document.querySelector('header details.md\\:hidden');
     const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
     const closeAllDropdowns = () => {
@@ -137,7 +138,17 @@ import HULogo from '../images/HULogo.png';
     document.addEventListener('click', (event) => {
       if (!event.target.closest('header')) {
         closeAllDropdowns();
+        if (mobileMenu) mobileMenu.removeAttribute('open');
       }
     });
+
+    if (mobileMenu) {
+      mobileMenu.addEventListener('toggle', () => {
+        if (!mobileMenu.open) closeAllDropdowns();
+      });
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => mobileMenu.removeAttribute('open'));
+      });
+    }
   </script>
 </header>

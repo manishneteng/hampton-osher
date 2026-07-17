@@ -1,0 +1,46 @@
+# Generated folders - these are eating 70% of my tokens
+node_modules/
+dist/
+.astro/
+.next/
+build/
+coverage/
+.cache/
+.vercel/
+.output/
+
+# Map files (large, not needed)
+*.map
+*.js.map
+*.ts.map
+*.mjs.map
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Logs
+*.log
+*.txt
+*.trace
+
+# Reference docs (moved out of .agents to save tokens)
+.agents-refs/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE folders
+.idea/
+*.iml
+.vscode/*.json
+!.vscode/settings.json
+
+# Temp files
+*.tmp
+*.temp

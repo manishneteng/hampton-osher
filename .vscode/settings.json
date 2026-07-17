@@ -1,2 +1,8 @@
 {
+  "github.copilot.chat.scopeSelection": true,
+  "github.copilot.chat.search.context": "file",
+  "github.copilot.chat.followUp": "never",
+  "github.copilot.chat.agent.maxPromptTokens": 16000,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "github.copilot.chat.experimental.slashCommands": false
 }
