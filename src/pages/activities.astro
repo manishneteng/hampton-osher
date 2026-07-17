@@ -70,10 +70,10 @@ const vendors = [v1, v2, v3, v4, v5];
       </div>
 
       <div class="mt-12">
-        <div class="swiper overflow-visible swiper-initialized" id="activities-gallery" style="overflow: visible;">
-          <div class="swiper-wrapper" style="display: flex;">
+        <div class="swiper" id="activities-gallery">
+          <div class="swiper-wrapper">
             {gallery.map((img, i) => (
-              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;" onclick={`openLightbox(${i})`}>
+              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openLightbox(${i})`}>
                 <img src={img.src} alt={`Activity photo ${i + 1}`} class="h-auto w-full max-h-[400px] object-contain" loading="lazy" />
               </div>
             ))}
@@ -109,10 +109,10 @@ const vendors = [v1, v2, v3, v4, v5];
             </div>
           ))}
         </div>
-        <div class="swiper overflow-visible sm:!hidden swiper-initialized" id="trips-gallery" style="overflow: visible;">
-          <div class="swiper-wrapper" style="display: flex;">
+        <div class="swiper sm:!hidden" id="trips-gallery">
+          <div class="swiper-wrapper">
             {trips.map((img, i) => (
-              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;" onclick={`openTripLightbox(${i})`}>
+              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
                 <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
               </div>
             ))}
@@ -145,10 +145,10 @@ const vendors = [v1, v2, v3, v4, v5];
             </div>
           ))}
         </div>
-        <div class="swiper overflow-visible sm:!hidden swiper-initialized" id="vendors-gallery" style="overflow: visible;">
-          <div class="swiper-wrapper" style="display: flex;">
+        <div class="swiper sm:!hidden" id="vendors-gallery">
+          <div class="swiper-wrapper">
             {vendors.map((img) => (
-              <div class="swiper-slide overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;">
+              <div class="swiper-slide overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
               </div>
             ))}
@@ -166,16 +166,16 @@ const vendors = [v1, v2, v3, v4, v5];
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
-      <div class="swiper" id="lightbox-swiper">
+      <div class="swiper !w-full" id="lightbox-swiper">
         <div class="swiper-wrapper">
           {gallery.map((img) => (
-            <div class="swiper-slide !flex items-center justify-center">
+            <div class="swiper-slide !flex items-center justify-center !w-full !flex-shrink-0">
               <img src={img.src} alt="Activity photo" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
             </div>
           ))}
         </div>
-        <div class="swiper-button-prev !text-white"></div>
-        <div class="swiper-button-next !text-white"></div>
+        <div class="swiper-button-prev lb-prev !text-white"></div>
+        <div class="swiper-button-next lb-next !text-white"></div>
       </div>
     </div>
   </dialog>
@@ -187,16 +187,16 @@ const vendors = [v1, v2, v3, v4, v5];
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
       </button>
-      <div class="swiper" id="trips-lightbox-swiper">
+      <div class="swiper !w-full" id="trips-lightbox-swiper">
         <div class="swiper-wrapper">
           {trips.map((img) => (
-            <div class="swiper-slide !flex items-center justify-center">
+            <div class="swiper-slide !flex items-center justify-center !w-full !flex-shrink-0">
               <img src={img.src} alt="Trip photo" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
             </div>
           ))}
         </div>
-        <div class="swiper-button-prev !text-white"></div>
-        <div class="swiper-button-next !text-white"></div>
+        <div class="swiper-button-prev trip-lb-prev !text-white"></div>
+        <div class="swiper-button-next trip-lb-next !text-white"></div>
       </div>
     </div>
   </dialog>
@@ -257,36 +257,40 @@ const vendors = [v1, v2, v3, v4, v5];
     window.openLightbox = (index) => {
       const modal = document.getElementById('gallery-lightbox');
       modal.showModal();
-      if (lbSwiper && lbSwiper.el?.isConnected) {
-        lbSwiper.slideTo(index);
-      } else {
-        lbSwiper = new Swiper(document.getElementById('lightbox-swiper'), {
-          modules: [Navigation, Keyboard],
-          slidesPerView: 1,
-          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-          keyboard: { enabled: true },
-          grabCursor: true,
-          initialSlide: index,
-        });
-      }
+      setTimeout(() => {
+        if (lbSwiper && lbSwiper.el?.isConnected) {
+          lbSwiper.slideTo(index);
+        } else {
+          lbSwiper = new Swiper(document.getElementById('lightbox-swiper'), {
+            modules: [Navigation, Keyboard],
+            slidesPerView: 1,
+            navigation: { nextEl: '.lb-next', prevEl: '.lb-prev' },
+            keyboard: { enabled: true },
+            grabCursor: true,
+            initialSlide: index,
+          });
+        }
+      }, 150);
     };
 
     let tripLbSwiper = null;
     window.openTripLightbox = (index) => {
       const modal = document.getElementById('trips-lightbox');
       modal.showModal();
-      if (tripLbSwiper && tripLbSwiper.el?.isConnected) {
-        tripLbSwiper.slideTo(index);
-      } else {
-        tripLbSwiper = new Swiper(document.getElementById('trips-lightbox-swiper'), {
-          modules: [Navigation, Keyboard],
-          slidesPerView: 1,
-          navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-          keyboard: { enabled: true },
-          grabCursor: true,
-          initialSlide: index,
-        });
-      }
+      setTimeout(() => {
+        if (tripLbSwiper && tripLbSwiper.el?.isConnected) {
+          tripLbSwiper.slideTo(index);
+        } else {
+          tripLbSwiper = new Swiper(document.getElementById('trips-lightbox-swiper'), {
+            modules: [Navigation, Keyboard],
+            slidesPerView: 1,
+            navigation: { nextEl: '.trip-lb-next', prevEl: '.trip-lb-prev' },
+            keyboard: { enabled: true },
+            grabCursor: true,
+            initialSlide: index,
+          });
+        }
+      }, 150);
     };
   </script>
 </Layout>
