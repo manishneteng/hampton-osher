@@ -64,7 +64,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
             loading="lazy"
           />
           <div class="mt-5 text-center">
-            <button onclick="openCatalog()" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A] hover:shadow-lg hover:-translate-y-0.5">
+            <button id="open-catalog-btn" class="inline-flex cursor-pointer items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A] hover:shadow-lg hover:-translate-y-0.5">
               Click here to view the course catalog
             </button>
           </div>
@@ -220,7 +220,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
                   {!isCover(idx) && isFirstInRightPair(idx) && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent z-10" />}
                   <img
                     src={img}
-                    alt={`OLLI Course Catalog page ${idx + 1}`}
+                    alt={`OLLI Course Catalog page $${idx + 1}`}
                     class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
                     style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
                     loading="lazy"
@@ -261,7 +261,6 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       opacity: 1;
       transform: perspective(1600px) rotateY(0deg) scale(1);
     }
-    /* Mobile: flat, full-width pages */
     #catalog-swiper:not(.md\:two-up) .swiper-slide {
       opacity: 1 !important;
       transform: none !important;
@@ -269,7 +268,6 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
     #catalog-swiper:not(.md\:two-up) .swiper-slide img {
       max-height: 85vh;
     }
-    /* Desktop spread: cover page fills its half */
     #catalog-swiper.md\:two-up .cover-slide > div {
       max-width: none !important;
     }
@@ -284,7 +282,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 
     let swiperInstance = null;
 
-    window.openCatalog = function () {
+    document.getElementById('open-catalog-btn')?.addEventListener('click', function () {
       const modal = document.getElementById('catalog-modal');
       modal.showModal();
 
@@ -322,6 +320,6 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       } else {
         swiperInstance.update();
       }
-    };
+    });
   </script>
 </Layout>

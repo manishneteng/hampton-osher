@@ -1,56 +1,50 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import DonorsBG from '../images/DonorsBG.png';
 ---
 
 <Layout>
-  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-16 sm:py-20">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-4xl mx-auto">
-        <p class="text-sm uppercase tracking-[0.3em] text-[#004ADD] font-semibold mb-4">Support & Giving</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
-          Our Inaugural Donors
-        </h1>
-        <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
-          We extend our heartfelt appreciation to the generous individuals and families whose support has helped advance the mission of the Osher Lifelong Learning Institute at Hampton University.
-        </p>
-      </div>
+  <!-- ====== Hero ====== -->
+  <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
+    <!-- Background image with blur -->
+    <div class="absolute inset-0">
+      <img
+        src={DonorsBG.src}
+        alt=""
+        class="h-full w-full object-cover blur-sm scale-110"
+      />
+      <!-- Stronger overlay for text pop -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <!-- Brand glow -->
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 lg:px-8">
+      <p class="text-sm uppercase tracking-[0.3em] text-blue-200 font-semibold mb-4">Support & Giving</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
+        Our Inaugural Donors
+      </h1>
+      <p class="mt-4 text-lg text-blue-200">Honoring those who made our launch possible</p>
+      <p class="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+        We extend our heartfelt appreciation to the generous individuals and families whose support has helped advance the mission of the Osher Lifelong Learning Institute at Hampton University.
+      </p>
+    </div>
+
+    <!-- Curved bottom separator -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#F8FAFC">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      </svg>
     </div>
   </section>
 
-  <section class="bg-white py-20">
+  <section class="bg-[#F8FAFC] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
-        <p class="mt-6 text-lg leading-relaxed text-slate-700">
-          We extend our heartfelt acknowledgements to the generous donors who have supported Osher's fundraising initiatives.
-        </p>
-        <p class="mt-4 text-base leading-relaxed text-slate-600">
-          While the Osher Lifelong Learning Institute at Hampton University has made every effort to ensure the accuracy of this listing, we would appreciate you notifying us of any errors or omissions.
-        </p>
-        <p class="mt-8 text-base leading-relaxed text-slate-700">
-          <strong class="font-semibold text-[#02275A]">Questions or corrections?</strong><br />
-          Please contact <strong class="text-[#02275A]">Ms. Alisha Beverley</strong> at <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>.
-        </p>
-      </div>
+      <h2 class="sr-only">Inaugural Donors</h2>
 
-      <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {/*
-          Alease Gant, Alice Capehart, Aravia Johnson, Artis & Dorothy Croslin,
-          Bettye Sellman, Brenda & Clifton Collins, Carolyn Porter, Cassandra Agard,
-          Catherine Howard, Charlene Tate-Nichols, Daphne Jackson, Deborah Moses,
-          Donna Rankin, Dr. Aresta Johnson, Dr. Joan Wickham, Edward Carpenter,
-          Edna & Richard Coleman, Elemuel Watts, Emma Vinson-Brown, Ethel Morgan,
-          Evelyn Golden, Evelyn Perry, Frank & Celestine Batts, Felicia Blowe,
-          Felicia Huntley, Geraldine Foster, Hilda Williamson, James Harris,
-          Janet Brooks, Jayne Coleman, Jewel Long, Karen Barrett, Keith & Almeria Grant,
-          Linda Shields, Lloyd Boxley, Melvin Hill, Meta Hoyt,
-          Micheal Williams-Hickman, Monty Taylor, Nancy Christian, Norma Sellman,
-          Paula & Robert Perry, Phyllis Porter, Regina Jones, Rumell Whitney,
-          Sharon Callahan, Sheree Hammond, Sherrill Banks-Wiley, Sheryl Jackson,
-          Stephanie Cuffee, Theresa Miles, Thomasina Williams, Thomas Whitney,
-          Theora Rankin, Valerie Price, Venessa Harris, Veronica Long, Virginia Owens,
-          Wanda Cooke, William & Dorothy Richmond
-        */}
+      <!-- A -->
+      <h3 class="mt-14 mb-4 text-xl font-bold font-display text-[#02275A]">A</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Alease Gant</p>
         </div>
@@ -63,12 +57,22 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Artis &amp; Dorothy Croslin</p>
         </div>
+      </div>
+
+      <!-- B -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">B</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Bettye Sellman</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Brenda &amp; Clifton Collins</p>
         </div>
+      </div>
+
+      <!-- C -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">C</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Carolyn Porter</p>
         </div>
@@ -81,6 +85,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Charlene Tate-Nichols</p>
         </div>
+      </div>
+
+      <!-- D -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">D</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Daphne Jackson</p>
         </div>
@@ -96,6 +105,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Dr. Joan Wickham</p>
         </div>
+      </div>
+
+      <!-- E -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">E</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Edward Carpenter</p>
         </div>
@@ -117,6 +131,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Evelyn Perry</p>
         </div>
+      </div>
+
+      <!-- F -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">F</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Frank &amp; Celestine Batts</p>
         </div>
@@ -126,12 +145,27 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Felicia Huntley</p>
         </div>
+      </div>
+
+      <!-- G -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">G</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Geraldine Foster</p>
         </div>
+      </div>
+
+      <!-- H -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">H</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Hilda Williamson</p>
         </div>
+      </div>
+
+      <!-- J -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">J</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">James Harris</p>
         </div>
@@ -144,18 +178,33 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Jewel Long</p>
         </div>
+      </div>
+
+      <!-- K -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">K</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Karen Barrett</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Keith &amp; Almeria Grant</p>
         </div>
+      </div>
+
+      <!-- L -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">L</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Linda Shields</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Lloyd Boxley</p>
         </div>
+      </div>
+
+      <!-- M -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">M</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Melvin Hill</p>
         </div>
@@ -168,24 +217,44 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Monty Taylor</p>
         </div>
+      </div>
+
+      <!-- N -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">N</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Nancy Christian</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Norma Sellman</p>
         </div>
+      </div>
+
+      <!-- P -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">P</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Paula &amp; Robert Perry</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Phyllis Porter</p>
         </div>
+      </div>
+
+      <!-- R -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">R</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Regina Jones</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Rumell Whitney</p>
         </div>
+      </div>
+
+      <!-- S -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">S</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Sharon Callahan</p>
         </div>
@@ -201,6 +270,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Stephanie Cuffee</p>
         </div>
+      </div>
+
+      <!-- T -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">T</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Theresa Miles</p>
         </div>
@@ -213,6 +287,11 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Theora Rankin</p>
         </div>
+      </div>
+
+      <!-- V -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">V</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Valerie Price</p>
         </div>
@@ -225,12 +304,33 @@ import Layout from '../layouts/Layout.astro';
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Virginia Owens</p>
         </div>
+      </div>
+
+      <!-- W -->
+      <h3 class="mt-10 mb-4 text-xl font-bold font-display text-[#02275A]">W</h3>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">Wanda Cooke</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
           <p class="text-base font-semibold text-[#02275A]">William &amp; Dorothy Richmond</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gradient-to-b from-[#F5F8FD] to-white py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-[#004ADD]/40 to-transparent"></div>
+      <h2 class="mt-8 text-3xl font-extrabold font-display text-[#02275A]">With Gratitude</h2>
+      <p class="mt-6 text-lg leading-relaxed text-slate-700 max-w-3xl mx-auto">
+        We are deeply grateful to every donor who has invested in the joy of lifelong learning. Your generosity ensures that OLLI at Hampton University remains a vibrant, welcoming community for curious adults 50+.
+      </p>
+      <div class="mt-10 pt-2">
+        <p class="text-sm text-slate-500">
+          Questions? Contact <span class="font-semibold text-[#02275A]">Alisha Beverley </span>
+          <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>
+        </p>
       </div>
     </div>
   </section>

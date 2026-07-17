@@ -1,21 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import WaysToGiveBG from '../images/WaystoGiveBG.png';
 ---
 
 <Layout>
-  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-16 sm:py-20">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-4xl mx-auto">
-        <p class="text-sm uppercase tracking-[0.35em] text-[#004ADD] font-semibold mb-4">Support & Giving</p>
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-[#02275A] leading-tight tracking-[-0.02em]">
-          Support Lifelong Learning
-        </h1>
-        <p class="mt-4 text-lg text-[#004ADD]">Every gift, at any level, makes a meaningful difference.</p>
-        <p class="mt-6 text-lg text-slate-700 max-w-3xl mx-auto leading-relaxed">
-          Your generosity helps OLLI at Hampton University continue providing meaningful educational experiences, engaging programs, and opportunities for connection that enrich the lives of our members. Every gift helps sustain a community where curiosity, learning, and lifelong growth thrive.
-        </p>
-      </div>
+  <!-- ====== Hero ====== -->
+  <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
+    <!-- Background image with blur -->
+    <div class="absolute inset-0">
+      <img
+        src={WaysToGiveBG.src}
+        alt=""
+        class="h-full w-full object-cover blur-sm scale-110"
+      />
+      <!-- Stronger overlay for text pop -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <!-- Brand glow -->
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-4 pb-16 pt-20 text-center sm:px-6 lg:px-8">
+      <p class="text-sm uppercase tracking-[0.35em] text-blue-200 font-semibold mb-4">Support & Giving</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
+        Support Lifelong Learning
+      </h1>
+      <p class="mt-4 text-lg text-blue-200">Every gift, at any level, makes a meaningful difference.</p>
+      <p class="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+        Your generosity helps OLLI at Hampton University continue providing meaningful educational experiences, engaging programs, and opportunities for connection that enrich the lives of our members. Every gift helps sustain a community where curiosity, learning, and lifelong growth thrive.
+      </p>
+    </div>
+
+    <!-- Curved bottom separator -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#FFFFFF">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      </svg>
     </div>
   </section>
 

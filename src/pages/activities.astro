@@ -70,10 +70,10 @@ const vendors = [v1, v2, v3, v4, v5];
       </div>
 
       <div class="mt-12">
-        <div class="swiper overflow-visible" id="activities-gallery">
-          <div class="swiper-wrapper">
+        <div class="swiper overflow-visible swiper-initialized" id="activities-gallery" style="overflow: visible;">
+          <div class="swiper-wrapper" style="display: flex;">
             {gallery.map((img, i) => (
-              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openLightbox(${i})`}>
+              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;" onclick={`openLightbox(${i})`}>
                 <img src={img.src} alt={`Activity photo ${i + 1}`} class="h-auto w-full max-h-[400px] object-contain" loading="lazy" />
               </div>
             ))}
@@ -109,10 +109,10 @@ const vendors = [v1, v2, v3, v4, v5];
             </div>
           ))}
         </div>
-        <div class="swiper overflow-visible sm:!hidden" id="trips-gallery">
-          <div class="swiper-wrapper">
+        <div class="swiper overflow-visible sm:!hidden swiper-initialized" id="trips-gallery" style="overflow: visible;">
+          <div class="swiper-wrapper" style="display: flex;">
             {trips.map((img, i) => (
-              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
+              <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;" onclick={`openTripLightbox(${i})`}>
                 <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
               </div>
             ))}
@@ -145,10 +145,10 @@ const vendors = [v1, v2, v3, v4, v5];
             </div>
           ))}
         </div>
-        <div class="swiper overflow-visible sm:!hidden" id="vendors-gallery">
-          <div class="swiper-wrapper">
+        <div class="swiper overflow-visible sm:!hidden swiper-initialized" id="vendors-gallery" style="overflow: visible;">
+          <div class="swiper-wrapper" style="display: flex;">
             {vendors.map((img) => (
-              <div class="swiper-slide overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <div class="swiper-slide overflow-hidden rounded-2xl border border-slate-200 bg-[#F8FAFC] shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" style="flex-shrink: 0; width: 100%;">
                 <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
               </div>
             ))}
@@ -208,48 +208,56 @@ const vendors = [v1, v2, v3, v4, v5];
     import 'swiper/css/scrollbar';
     import 'swiper/css/navigation';
 
-    new Swiper('#activities-gallery', {
-      modules: [Scrollbar, Keyboard],
-      slidesPerView: 1.2,
-      spaceBetween: 12,
-      scrollbar: { el: '.swiper-scrollbar', draggable: true },
-      keyboard: { enabled: true },
-      grabCursor: true,
-      breakpoints: {
-        640: { slidesPerView: 2.2, spaceBetween: 16 },
-        1024: { slidesPerView: 4, spaceBetween: 16 },
-      },
-    });
+    function initSwipers() {
+      const activitiesEl = document.getElementById('activities-gallery');
+      if (activitiesEl && !activitiesEl.swiper) {
+        new Swiper(activitiesEl, {
+          modules: [Scrollbar, Keyboard],
+          slidesPerView: 1.2,
+          spaceBetween: 12,
+          scrollbar: { el: '.swiper-scrollbar', draggable: true },
+          keyboard: { enabled: true },
+          grabCursor: true,
+          breakpoints: {
+            640: { slidesPerView: 2.2, spaceBetween: 16 },
+            1024: { slidesPerView: 4, spaceBetween: 16 },
+          },
+        });
+      }
 
-    const tripsEl = document.getElementById('trips-gallery');
-    if (tripsEl && window.getComputedStyle(tripsEl).display !== 'none') {
-      new Swiper(tripsEl, {
-        modules: [Scrollbar, Keyboard],
-        slidesPerView: 1.3,
-        spaceBetween: 12,
-        scrollbar: { el: '.swiper-scrollbar', draggable: true },
-        keyboard: { enabled: true },
-        grabCursor: true,
-      });
+      const tripsEl = document.getElementById('trips-gallery');
+      if (tripsEl && !tripsEl.swiper && window.getComputedStyle(tripsEl).display !== 'none') {
+        new Swiper(tripsEl, {
+          modules: [Scrollbar, Keyboard],
+          slidesPerView: 1.3,
+          spaceBetween: 12,
+          scrollbar: { el: '.swiper-scrollbar', draggable: true },
+          keyboard: { enabled: true },
+          grabCursor: true,
+        });
+      }
+
+      const vendorsEl = document.getElementById('vendors-gallery');
+      if (vendorsEl && !vendorsEl.swiper && window.getComputedStyle(vendorsEl).display !== 'none') {
+        new Swiper(vendorsEl, {
+          modules: [Scrollbar, Keyboard],
+          slidesPerView: 1.3,
+          spaceBetween: 12,
+          scrollbar: { el: '.swiper-scrollbar', draggable: true },
+          keyboard: { enabled: true },
+          grabCursor: true,
+        });
+      }
     }
 
-    const vendorsEl = document.getElementById('vendors-gallery');
-    if (vendorsEl && window.getComputedStyle(vendorsEl).display !== 'none') {
-      new Swiper(vendorsEl, {
-        modules: [Scrollbar, Keyboard],
-        slidesPerView: 1.3,
-        spaceBetween: 12,
-        scrollbar: { el: '.swiper-scrollbar', draggable: true },
-        keyboard: { enabled: true },
-        grabCursor: true,
-      });
-    }
+    document.addEventListener('astro:page-load', initSwipers);
+    initSwipers();
 
     let lbSwiper = null;
     window.openLightbox = (index) => {
       const modal = document.getElementById('gallery-lightbox');
       modal.showModal();
-      if (lbSwiper) {
+      if (lbSwiper && lbSwiper.el?.isConnected) {
         lbSwiper.slideTo(index);
       } else {
         lbSwiper = new Swiper(document.getElementById('lightbox-swiper'), {
@@ -267,7 +275,7 @@ const vendors = [v1, v2, v3, v4, v5];
     window.openTripLightbox = (index) => {
       const modal = document.getElementById('trips-lightbox');
       modal.showModal();
-      if (tripLbSwiper) {
+      if (tripLbSwiper && tripLbSwiper.el?.isConnected) {
         tripLbSwiper.slideTo(index);
       } else {
         tripLbSwiper = new Swiper(document.getElementById('trips-lightbox-swiper'), {

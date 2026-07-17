@@ -1,34 +1,46 @@
-﻿---
+---
 import Layout from '../layouts/Layout.astro';
+import HeroBG from '../images/HeroBG.png';
 ---
 
 <Layout>
-  <section class="relative bg-gradient-to-b from-[#EEF2F8] via-[#F5F8FD] to-[#F8FAFE] py-16 sm:py-20">
-    <div class="pointer-events-none absolute inset-0 opacity-[0.15]" style="background-image: radial-gradient(ellipse 80% 60% at 50% 0%, #004ADD 0%, transparent 70%);"></div>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl bg-white p-10 shadow-lg">
-        <div class="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          <div class="max-w-2xl">
-            <p class="text-sm uppercase tracking-[0.3em] text-[#004ADD] font-semibold">Volunteer</p>
-            <h1 class="mt-6 text-4xl font-black font-display text-[#071730] sm:text-5xl">Share your experience. Shape our community.</h1>
-            <p class="mt-6 text-lg leading-8 text-[#475569]">Hampton OLLI welcomes Course Instructors, Workshop Facilitators, and Interest Group Leaders who want to give back, lead conversations, and create memorable learning experiences.</p>
-          </div>
-          <div class="rounded-2xl bg-[#002D72] p-8 text-white shadow-lg">
-            <p class="text-sm uppercase tracking-[0.3em] text-[#C7D8FF] font-semibold">Why volunteer?</p>
-            <p class="mt-5 text-xl font-semibold">Guide lifelong learners through meaningful courses and strengthen Hampton’s community of enrichment.</p>
-          </div>
-        </div>
-      </div>
+  <!-- ====== Hero ====== -->
+  <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
+    <div class="absolute inset-0">
+      <img
+        src={HeroBG.src}
+        alt="OLLI lifelong learning community"
+        class="h-full w-full object-cover blur-sm scale-110"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto w-full max-w-4xl px-4 pb-16 pt-24 text-center sm:px-6 lg:px-8">
+      <p class="text-sm uppercase tracking-[0.35em] text-blue-200 font-semibold mb-4">Volunteer</p>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
+        Share your experience. Shape our community.
+      </h1>
+      <p class="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
+        Hampton OLLI welcomes Course Instructors, Workshop Facilitators, and Interest Group Leaders who want to give back, lead conversations, and create memorable learning experiences.
+      </p>
+    </div>
+
+    <!-- Curved bottom separator -->
+    <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#FFFFFF">
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      </svg>
     </div>
   </section>
 
   <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl bg-[#F8FBFF] p-10 shadow-lg">
+      <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm sm:p-10">
         <div class="space-y-8">
           <div>
-            <h2 class="text-3xl font-semibold font-display text-[#071730]">Start your application</h2>
-            <p class="mt-4 text-lg leading-8 text-[#475569]">Complete the form below and our team will reach out with next steps.</p>
+            <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Start your application</h2>
+            <p class="mt-4 text-lg leading-relaxed text-slate-700">Complete the form below and our team will reach out with next steps.</p>
           </div>
           <div class="rounded-2xl bg-white p-8 shadow-md">
             <script type="text/javascript" src="https://form.jotform.com/jsform/250904273696060"></script>
