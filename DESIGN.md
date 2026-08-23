@@ -2,18 +2,46 @@
 
 ## Palette
 
+**Strategy:** restrained "Committed." Hampton blue stays the primary brand color; warmth and energy are layered in through a coordinated set of complementary accents and warmer surfaces — never a rainbow. Tokens are defined in `src/styles/global.css` as Tailwind v4 `@theme` colors (usable as `bg-brand`, `text-gold`, `bg-teal-soft`, …).
+
+**Hierarchy:** 1 brand · 2 gold (secondary) · 3 teal (learning/community) · 4 terracotta (occasional energy) · 5 surfaces · 6 ink/text.
+
 | Role | Value | Usage |
 |------|-------|-------|
-| `--brand` | `#004ADD` | Primary actions, links, accents |
-| `--brand-dark` | `#02275A` | Dark backgrounds, hero overlay, footer, headings |
-| `--surface` | `#ffffff` | Card backgrounds, modal |
-| `--surface-muted` | `#F8FAFC` | Alternate section backgrounds |
-| `--page-bg` | `#F3F8FC` | Main page background (light blue tint) |
-| `--text` | `#25303B` | Body color (dark slate) |
-| `--text-muted` | `#475569` | Secondary text |
-| `--accent-light` | `#93C5FD` | Footer link/icon accent, label color |
-| `--border` | `#e2e8f0` | Subtle borders (Tailwind slate-200) |
-| White: `#ffffff`; near-black text: `#353A3C` (on body), `#02275A` (headings)
+| **Brand** `--color-brand` | `#004ADD` | Primary actions, links, accents |
+| **Brand dark** `--color-brand-dark` | `#02275A` | Draw backgrounds, hero overlay, footer, headings |
+| **Brand deep** `--color-brand-deep` | `#031A42` | Deepest navy — text emphasis on light |
+| **Brand soft** `--color-brand-soft` | `#E8F0FE` | Light blue tint — subtle brand section bg |
+| **Gold** `--color-gold` | `#C1922F` | Highlights, CTA accents (warmth + energy) |
+| **Gold strong** `--color-gold-strong` | `#A87A1E` | Gold as text/border on light (AA-safe) |
+| **Gold deep** `--color-gold-deep` | `#8A5F10` | Accessible gold text/borders |
+| **Gold soft** `--color-gold-soft` | `#F5EBD2` | Warm tinted fill |
+| **Teal** `--color-teal` | `#1F7A6E` | Learning / community sections |
+| **Teal strong** `--color-teal-strong` | `#16645C` | Teal as text/border on light |
+| **Teal deep** `--color-teal-deep` | `#10514A` | Teal text on light / small fills |
+| **Teal soft** `--color-teal-soft` | `#E0EFEA` | Sage section bg |
+| **Terracotta** `--color-terracotta` | `#C2603B` | Occasional energy accent (small doses) |
+| **Terracotta strong** `--color-terracotta-strong` | `#A84B2A` | Terracotta as text/border on light |
+| **Terracotta deep** `--color-terracotta-deep` | `#83371E` | Terracotta text on light |
+| **Terracotta soft** `--color-terracotta-soft` | `#F6E2D8` | Warm coral tinted fill |
+| **Cream** `--color-cream` | `#FAF5EC` | Warm off-white section background |
+| **Ivory** `--color-ivory` | `#FEFCF7` | Card surface (warm near-white) |
+| **Sky** `--color-sky` | `#EDF3F9` | Light blue-gray subtle bg |
+| **Mist** `--color-mist` | `#F5F8FD` | Main page background (cool light) |
+| **Ink** `--color-ink` | `#1E262F` | Body text (deep navy/charcoal) |
+| **Ink soft** `--color-ink-soft` | `#3E4A58` | Secondary text |
+| **Ink faint** `--color-ink-faint` | `#5C6B7A` | Muted text |
+| **Line** `--color-line` | `#E6E0D4` | Warm neutral border |
+| **Line cool** `--color-line-cool` | `#DCE3EC` | Cool border (existing slate) |
+| White: `#ffffff` (hero/dark text only); legacy `--surface`/`--surface-muted` now resolve to ivory/cream.
+
+**Distribution guide (for later steps, not applied yet):**
+- **Brand blue** → primary buttons, links, active nav, headings, dark hero/footer.
+- **Gold** → primary CTA accents, small highlights/labels, hover states, decorative line work. ≤10% of surface.
+- **Teal** → learning/course/community section backgrounds and cards.
+- **Terracotta** → one or two strategic energy accents (a highlight, an icon, a callout) — never repeated across every section.
+- **Cream/Ivory/Sky/Mist** → alternate section backgrounds instead of flat white everywhere; gives rhythm.
+- **Ink** → body and headings on light backgrounds.
 
 ## Typography
 

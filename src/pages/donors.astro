@@ -14,7 +14,7 @@ import DonorsBG from '../images/DonorsBG.png';
         class="h-full w-full object-cover blur-sm scale-110"
       />
       <!-- Stronger overlay for text pop -->
-      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#031A42] via-[#02275A]/85 to-[#02275A]/60"></div>
       <!-- Brand glow -->
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
     </div>
@@ -29,15 +29,21 @@ import DonorsBG from '../images/DonorsBG.png';
       </p>
     </div>
 
-    <!-- Curved bottom separator -->
+    <!-- Curved bottom separator — blends hero navy into the donors section teal -->
     <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
-      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#F8FAFC">
-        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="donors-hero-to-first" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#02275A" />
+            <stop offset="100%" stop-color="#03205C" />
+          </linearGradient>
+        </defs>
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" fill="url(#donors-hero-to-first)" />
       </svg>
     </div>
   </section>
 
-  <section class="bg-[#F8FAFC] py-20">
+  <section id="donors" class="relative py-20 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="sr-only">Inaugural Donors</h2>
 
@@ -318,19 +324,95 @@ import DonorsBG from '../images/DonorsBG.png';
     </div>
   </section>
 
-  <section class="bg-gradient-to-b from-[#F5F8FD] to-white py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-[#004ADD]/40 to-transparent"></div>
-      <h2 class="mt-8 text-3xl font-extrabold font-display text-[#02275A]">With Gratitude</h2>
-      <p class="mt-6 text-lg leading-relaxed text-slate-700 max-w-3xl mx-auto">
+  <section class="relative overflow-hidden py-16">
+    <div class="gratitude-bg absolute inset-0"></div>
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#F2D18A]/40 to-transparent"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-[#F2D18A]/60 to-transparent"></div>
+      <h2 class="mt-8 text-3xl font-extrabold font-display text-[#F5EBD2]">With Gratitude</h2>
+      <p class="mt-6 text-lg leading-relaxed text-white/85 max-w-3xl mx-auto">
         We are deeply grateful to every donor who has invested in the joy of lifelong learning. Your generosity ensures that OLLI at Hampton University remains a vibrant, welcoming community for curious adults 50+.
       </p>
       <div class="mt-10 pt-2">
-        <p class="text-sm text-slate-500">
-          Questions? Contact <span class="font-semibold text-[#02275A]">Alisha Beverley </span>
-          <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>
+        <p class="text-sm text-white/70">
+          Questions? Contact <span class="font-semibold text-[#FFE3B0]">Alisha Beverley </span>
+          <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#F2D18A] underline decoration-1 underline-offset-2 hover:text-[#FFE3B0] transition">alisha.beverley@hamptonu.edu</a>
         </p>
       </div>
     </div>
   </section>
 </Layout>
+
+<style is:global>
+  /* ============================================================
+     Donors page — complementary palette + glass donor cards
+     Anchored on Hampton blue, warmed with deep teal, muted plum,
+     warm gold, and soft coral. Scoped to this page only.
+     ============================================================ */
+
+  /* — Smooth section gradient for the donor grid (navy → teal → navy) */
+  #donors {
+    background:
+      radial-gradient(58rem 42rem at 88% 24%, rgba(31, 122, 110, 0.3), transparent 62%),
+      radial-gradient(50rem 40rem at 12% 52%, rgba(109, 74, 126, 0.24), transparent 60%),
+      radial-gradient(62rem 44rem at 74% 94%, rgba(194, 146, 47, 0.16), transparent 60%),
+      linear-gradient(180deg, #03205C 0%, #0B4E4C 53%, #063052 100%);
+  }
+
+  /* — Alphabet letter headers: warm gold, celebratory, easy to scan */
+  #donors h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2.75rem 0 1.25rem;
+    font-family: var(--font-display, "Playfair Display", serif);
+    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    color: #F5EBD2;
+  }
+  #donors h3::after {
+    content: "";
+    height: 1px;
+    width: 3.5rem;
+    background: linear-gradient(90deg, rgba(194, 146, 47, 0.7), transparent);
+  }
+
+  /* — Glass donor cards: translucent, blurred, softly bordered */
+  #donors .grid > div {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.045));
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 18px 40px -18px rgba(2, 20, 40, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 1.25rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  #donors .grid > div:hover {
+    transform: translateY(-3px);
+    border-color: rgba(194, 146, 47, 0.55);
+    box-shadow: 0 24px 48px -20px rgba(2, 20, 40, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+  #donors .grid > div p {
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #F3F7FF;
+  }
+
+  /* — Gratitude section: plum → warm coral → navy (blends into the navy footer) */
+  .gratitude-bg {
+    background:
+      radial-gradient(55rem 36rem at 20% 30%, rgba(194, 96, 59, 0.18), transparent 60%),
+      radial-gradient(50rem 36rem at 85% 60%, rgba(194, 146, 47, 0.14), transparent 60%),
+      linear-gradient(180deg, #063052 0%, #2E2150 42%, #4C3359 58%, #02275A 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #donors .grid > div {
+      transition: none;
+    }
+  }
+</style>

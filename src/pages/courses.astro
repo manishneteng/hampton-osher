@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CoursesBG from '../images/CoursesBG.png';
+import Group13 from '../images/GroupPhotos/Group13.jpg';
+import Group23 from '../images/GroupPhotos/Group23.jpg';
+import Group12 from '../images/GroupPhotos/Group12.jpg';
+import Group24 from '../images/GroupPhotos/Group24.png';
+import Group4 from '../images/GroupPhotos/Group4.jpeg';
+import Group10 from '../images/GroupPhotos/Group10.jpg';
+import Group9 from '../images/GroupPhotos/Group9.jpeg';
+import Group26 from '../images/GroupPhotos/Group26.png';
 
 const catalogImages = Object.entries(
   import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
@@ -46,16 +54,22 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 
     <!-- Curved bottom separator -->
     <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
-      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#FFFFFF">
-        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="courses-hero-to-first" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#02275A" />
+            <stop offset="100%" stop-color="#0E5C9C" />
+          </linearGradient>
+        </defs>
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" fill="url(#courses-hero-to-first)" />
       </svg>
     </div>
   </section>
 
-  <section class="bg-white py-20">
+  <section class="bg-gradient-to-b from-[#0E5C9C] via-[#2E8FAD] to-[#E87464] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
-        <div class="rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-6">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_44px_rgba(2,39,90,0.3)] sm:p-6">
           <img
             src={catalogImages[0]}
             alt="OLLI Course Catalog cover"
@@ -69,133 +83,255 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </div>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:p-10">
-          <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Ready to discover your next adventure?</h2>
-          <p class="mt-4 text-lg leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-8 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_44px_rgba(2,39,90,0.3)] sm:p-10">
+          <h2 class="text-3xl font-extrabold font-display text-white drop-shadow-sm">Ready to discover your next adventure?</h2>
+          <p class="mt-4 text-lg leading-relaxed text-white/90">
             Browse our courses, meet our incredible instructors, and join a community where curiosity knows no age limit.
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
-            <a href="mailto:alisha.beverley@hamptonu.edu" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-[#02275A] hover:shadow-lg hover:-translate-y-0.5">
-              Email Alisha
+            <a href="mailto:osherhamptonu@gmail.com" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-base font-semibold text-[#02275A] shadow-lg transition hover:bg-blue-50 hover:shadow-xl hover:-translate-y-0.5">
+              Email Us
             </a>
-            <a href="tel:7577275434" class="inline-flex items-center justify-center rounded-full border border-slate-200 px-6 py-3 text-base font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50 hover:shadow-md hover:-translate-y-0.5">
+            <a href="tel:7577275434" class="inline-flex items-center justify-center rounded-full border border-white/50 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-sm transition hover:bg-white/20 hover:shadow-md hover:-translate-y-0.5">
               Call 757-727-5434
             </a>
           </div>
-          <p class="mt-6 text-base leading-relaxed text-slate-600">
-            For questions or assistance, please call <strong class="text-[#02275A]">757-727-5434</strong> or email <strong class="text-[#02275A]">Alisha Beverley</strong> at <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>.
+          <p class="mt-6 text-base leading-relaxed text-white/80">
+            For questions or assistance, please call <strong class="font-semibold text-white">757-727-5434</strong> or email us at <a href="mailto:osherhamptonu@gmail.com" class="font-semibold text-white underline decoration-1 underline-offset-2 hover:text-blue-100 transition">osherhamptonu@gmail.com</a>.
           </p>
+        </div>
+      </div>
+
+      <!-- Community feature: interactive learning -->
+      <div class="mt-20 grid items-center gap-10 lg:grid-cols-[1.15fr_1fr]">
+        <div class="order-2 rounded-2xl border border-white/30 bg-white/10 p-4 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md lg:order-1">
+          <img
+            src={Group23.src}
+            alt="OLLI members learning together in an interactive class"
+            class="h-auto w-full rounded-xl object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="order-1 rounded-2xl border border-white/30 bg-white/10 p-8 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md lg:order-2 sm:p-10">
+          <h2 class="text-3xl font-extrabold font-display text-white drop-shadow-sm">Learning is livelier together</h2>
+          <p class="mt-4 text-lg leading-relaxed text-white/90">
+            Our sessions are built around conversation, curiosity, and connection — members aren't just audiences, they're part of the energy in the room. Whether it's a spirited discussion or a new technique picked up side by side, the joy of discovery multiplies the moment it's shared.
+          </p>
+        </div>
+      </div>
+
+      <!-- Community feature: teaching -->
+      <div class="mt-16 grid items-center gap-10 lg:grid-cols-[1fr_1.15fr]">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-8 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md sm:p-10">
+          <h2 class="text-3xl font-extrabold font-display text-white drop-shadow-sm">Guided by passionate instructors</h2>
+          <p class="mt-4 text-lg leading-relaxed text-white/90">
+            Our member-led courses are taught by people who love what they teach — experts, hobbyists, and long-time learners who lead with warmth, patience, and genuine enthusiasm. You'll feel encouraged from the very first class.
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-4 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md">
+          <img
+            src={Group13.src}
+            alt="An OLLI instructor teaching a course"
+            class="h-auto w-full rounded-xl object-cover"
+            loading="lazy"
+          />
         </div>
       </div>
     </div>
   </section>
 
-  <section class="bg-[#F8FAFC] py-20">
+  <section class="bg-gradient-to-b from-[#E87464] via-[#C2537F] to-[#02275A] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Current Courses</h2>
-        <p class="mt-4 text-lg text-slate-700">Engaging, accessible, and member-led learning experiences designed for adults 50 and better.</p>
+        <h2 class="text-3xl font-extrabold font-display text-white">Current Courses</h2>
+        <p class="mt-4 text-lg text-white/90">Engaging, accessible, and member-led learning experiences designed for adults 50 and better.</p>
       </div>
 
-      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Fitness &amp; Dance</h3>
+      <!-- Fitness featured photo -->
+      <div class="relative mb-14 overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md">
+        <img
+          src={Group12.src}
+          alt="OLLI members moving together in a fitness class"
+          class="h-64 w-full object-cover sm:h-80 lg:h-96"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/85 via-[#02275A]/25 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Move, sweat, smile</p>
+          <h3 class="mt-2 text-2xl font-extrabold font-display text-white drop-shadow-sm sm:text-3xl">Fitness is better with friends by your side</h3>
+        </div>
+      </div>
+
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-white">Fitness &amp; Dance</h3>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Move Your Body: Fitness</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Fitness</p>
+          <h3 class="text-xl font-bold font-display text-white">Move Your Body: Fitness</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             An energetic weightlifting and strength-training class where participants learn to move more freely while gaining strength and flexibility through weights, resistance bands, and varied exercises.
           </p>
         </div>
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Beginners)</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Dance</p>
+          <h3 class="text-xl font-bold font-display text-white">Line Dancing for Everyone (Beginners)</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             Learn basic steps and simple dances that promote fun, fitness, confidence, mental stimulation, and social connection.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Line Dancing for Everyone (Returning Steppers)</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Dance</p>
+          <h3 class="text-xl font-bold font-display text-white">Line Dancing for Everyone (Returning Steppers)</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             A more advanced line dancing class that challenges memory, coordination, and confidence through multi-step routines while encouraging movement and fun.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Dance &amp; Fitness</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Salsa-Cise</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Dance &amp; Fitness</p>
+          <h3 class="text-xl font-bold font-display text-white">Salsa-Cise</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             A dance fitness class that uses Latin rhythms and movement to lift the spirit, reduce stress, and promote physical and mental well-being. No prior experience is required.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Fitness</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Zumba</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Fitness</p>
+          <h3 class="text-xl font-bold font-display text-white">Zumba</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             A popular exercise program that combines Latin music with choreographed dance movements to create an engaging aerobic workout.
           </p>
         </div>
-      </div>
 
-      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Arts &amp; Crafts</h3>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Arts &amp; Crafts</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Handmade Greeting Cards</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
-            Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
-          </p>
-        </div>
-      </div>
-
-      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Languages</h3>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Intermediate Spanish</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
-            Designed for members with a basic background in Spanish pronunciation, grammar, and vocabulary who want to continue developing their Spanish skills. <em>In person &amp; virtual.</em>
-          </p>
-        </div>
-
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Language</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Beginning Spanish</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
-            Designed for members who want to begin learning how to speak Spanish fluently. <em>In person &amp; virtual.</em>
-          </p>
-        </div>
-      </div>
-
-      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Wellness</h3>
-      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Wellness</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Yoga For Everyone</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Wellness</p>
+          <h3 class="text-xl font-bold font-display text-white">Yoga For Everyone</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             A yoga class focused on uniting body, breath, and mind through mindful movement, relaxation, and meditation to support healthy aging and wellness.
           </p>
         </div>
       </div>
 
-      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-[#02275A]">Book Club &amp; Discussion</h3>
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-white">Arts &amp; Crafts</h3>
+
+      <!-- Arts & crafts featured photo -->
+      <div class="relative mb-14 overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md">
+        <img
+          src={Group24.src}
+          alt="OLLI members crafting together in an arts class"
+          class="h-64 w-full object-cover sm:h-80 lg:h-96"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/85 via-[#02275A]/25 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Create, connect, inspire</p>
+          <h3 class="mt-2 text-2xl font-extrabold font-display text-white drop-shadow-sm sm:text-3xl">Arts &amp; crafts are better together</h3>
+        </div>
+      </div>
+
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Book Club</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Kings Roundtable Osher Book Club</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Arts &amp; Crafts</p>
+          <h3 class="text-xl font-bold font-display text-white">Handmade Greeting Cards</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
+            Learn how to create unique handmade greeting cards using different card-making tools and techniques that family and friends will treasure.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-white">Languages</h3>
+
+      <!-- Languages featured photo -->
+      <div class="relative mb-14 overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md">
+        <img
+          src={Group9.src}
+          alt="OLLI members learning a new language together"
+          class="h-64 w-full object-cover sm:h-80 lg:h-96"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/85 via-[#02275A]/25 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Learn something new</p>
+          <h3 class="mt-2 text-2xl font-extrabold font-display text-white drop-shadow-sm sm:text-3xl">A new language opens new worlds</h3>
+        </div>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Language</p>
+          <h3 class="text-xl font-bold font-display text-white">Intermediate Spanish</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
+            Designed for members with a basic background in Spanish pronunciation, grammar, and vocabulary who want to continue developing their Spanish skills. <em>In person &amp; virtual.</em>
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Language</p>
+          <h3 class="text-xl font-bold font-display text-white">Beginning Spanish</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
+            Designed for members who want to begin learning how to speak Spanish fluently. <em>In person &amp; virtual.</em>
+          </p>
+        </div>
+      </div>
+
+      <h3 class="mt-12 mb-4 text-xl font-bold font-display text-white">Book Club &amp; Discussion</h3>
+
+      <!-- Book club featured photo -->
+      <div class="relative mb-14 overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md">
+        <img
+          src={Group10.src}
+          alt="OLLI members reading and discussing a book together"
+          class="h-64 w-full object-cover sm:h-80 lg:h-96"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/85 via-[#02275A]/25 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/80">Read, reflect, connect</p>
+          <h3 class="mt-2 text-2xl font-extrabold font-display text-white drop-shadow-sm sm:text-3xl">Great conversations start with a good book</h3>
+        </div>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Book Club</p>
+          <h3 class="text-xl font-bold font-display text-white">Kings Roundtable Osher Book Club</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             An interest group centered around reading, discussion, and sharing a love of storytelling.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#004ADD] mb-3">Discussion</p>
-          <h3 class="text-xl font-bold font-display text-[#02275A]">Knowledge More Abundantly</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+        <div class="rounded-2xl border border-white/30 bg-white/10 p-6 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_40px_rgba(2,39,90,0.28)]">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80 mb-3">Discussion</p>
+          <h3 class="text-xl font-bold font-display text-white">Knowledge More Abundantly</h3>
+          <p class="mt-3 text-base leading-relaxed text-white/90">
             Explores the nature of knowledge, truth, and misinformation through guided discussions and debates about sources of knowledge, personal biases, and distinguishing fact from myth.
           </p>
+        </div>
+      </div>
+
+      <!-- Community close: classroom + connection -->
+      <div class="mt-16 grid gap-6 sm:grid-cols-2">
+        <div class="group relative overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md">
+          <img
+            src={Group26.src}
+            alt="OLLI members engaged in classroom learning"
+            class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] sm:h-80"
+            loading="lazy"
+          />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#02275A]/80 to-transparent p-5">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">In the classroom</p>
+          </div>
+        </div>
+        <div class="group relative overflow-hidden rounded-2xl border border-white/30 bg-white/10 shadow-[0_8px_28px_rgba(2,39,90,0.16)] backdrop-blur-md">
+          <img
+            src={Group4.src}
+            alt="OLLI members connecting as a community"
+            class="h-64 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03] sm:h-80"
+            loading="lazy"
+          />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#02275A]/80 to-transparent p-5">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-white/80">The heart of it all</p>
+          </div>
         </div>
       </div>
     </div>

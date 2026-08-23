@@ -31,17 +31,23 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
 
     <!-- Curved bottom separator -->
     <div class="absolute bottom-0 left-0 right-0 z-10 h-16">
-      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none" fill="#FFFFFF">
-        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" />
+      <svg class="h-full w-full" viewBox="0 0 1440 64" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="giving-hero-to-first" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#02275A" />
+            <stop offset="100%" stop-color="#F3916C" />
+          </linearGradient>
+        </defs>
+        <path d="M0 64 Q360 0 720 32 Q1080 64 1440 16 L1440 64 Z" fill="url(#giving-hero-to-first)" />
       </svg>
     </div>
   </section>
 
-  <section class="bg-white py-20">
+  <section class="bg-gradient-to-b from-[#F3916C] to-[#C9356C] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Your Generosity Matters</h2>
-        <div class="mt-6 space-y-5 text-lg leading-relaxed text-slate-700">
+        <h2 class="text-3xl font-extrabold font-display text-white">Your Generosity Matters</h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-[#FFF3ED]">
           <p>
             OLLI is committed to providing enriching educational and social experiences for our members. While membership and course registration fees help support program operations, they do not cover the full cost of delivering the high-quality courses, events, and experiences our community values.
           </p>
@@ -53,46 +59,46 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
     </div>
   </section>
 
-  <section class="bg-[#F8FAFC] py-20">
+  <section class="bg-gradient-to-b from-[#C9356C] to-[#8A4A8F] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Impact of Your Support</h2>
-        <p class="mt-4 text-lg text-slate-700">Every contribution helps sustain and grow the OLLI community.</p>
+        <h2 class="text-3xl font-extrabold font-display text-white">Impact of Your Support</h2>
+        <p class="mt-4 text-lg text-[#FBE8F2]">Every contribution helps sustain and grow the OLLI community.</p>
       </div>
 
       <div class="grid gap-8 md:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F5F8FD]">
-            <svg class="h-7 w-7 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="rounded-xl border border-white/20 bg-white/15 p-8 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
+            <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
             </svg>
           </div>
-          <h3 class="mt-6 text-xl font-bold font-display text-[#02275A]">Show Your Appreciation</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+          <h3 class="mt-6 text-xl font-bold font-display text-white">Show Your Appreciation</h3>
+          <p class="mt-3 text-base leading-relaxed text-[#FBE8F2]">
             Celebrate the impact OLLI has had on your life by helping ensure these opportunities continue for future generations.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F5F8FD]">
-            <svg class="h-7 w-7 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="rounded-xl border border-white/20 bg-white/15 p-8 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
+            <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
             </svg>
           </div>
-          <h3 class="mt-6 text-xl font-bold font-display text-[#02275A]">Sustain Our Programs</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+          <h3 class="mt-6 text-xl font-bold font-display text-white">Sustain Our Programs</h3>
+          <p class="mt-3 text-base leading-relaxed text-[#FBE8F2]">
             Support the continued development of high-quality courses, educational experiences, and engaging community events.
           </p>
         </div>
 
-        <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-[#F5F8FD]">
-            <svg class="h-7 w-7 text-[#004ADD]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <div class="rounded-xl border border-white/20 bg-white/15 p-8 shadow-sm backdrop-blur transition hover:-translate-y-0.5 hover:shadow-md">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-white/20">
+            <svg class="h-7 w-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
               <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
             </svg>
           </div>
-          <h3 class="mt-6 text-xl font-bold font-display text-[#02275A]">Support Our Community</h3>
-          <p class="mt-3 text-base leading-relaxed text-slate-700">
+          <h3 class="mt-6 text-xl font-bold font-display text-white">Support Our Community</h3>
+          <p class="mt-3 text-base leading-relaxed text-[#FBE8F2]">
             Help ensure OLLI programs remain affordable, accessible, and available to everyone who values lifelong learning.
           </p>
         </div>
@@ -100,16 +106,16 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
     </div>
   </section>
 
-  <section class="bg-[#F5F8FD] py-20">
+  <section class="bg-gradient-to-b from-[#8A4A8F] to-[#B15A8A] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl rounded-xl border border-slate-200 bg-white p-10 text-center shadow-sm sm:p-14">
-        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Make a Gift</h2>
-        <p class="mt-6 text-lg leading-relaxed text-slate-700">
+      <div class="mx-auto max-w-2xl rounded-2xl border border-white/30 bg-white/10 p-10 text-center shadow-[0_8px_32px_rgba(2,39,90,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/50 hover:bg-white/15 hover:shadow-[0_14px_44px_rgba(2,39,90,0.3)] sm:p-14">
+        <h2 class="text-3xl font-extrabold font-display text-white">Make a Gift</h2>
+        <p class="mt-6 text-lg leading-relaxed text-white/90">
           Please make checks payable to:
         </p>
-        <p class="mt-4 text-2xl font-bold text-[#02275A]">Hampton University Fund/OLLI</p>
+        <p class="mt-4 text-2xl font-bold text-white">Hampton University Fund/OLLI</p>
         <div class="mt-10">
-          <a href="https://form.jotform.com/240354605024143" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#004ADD] px-8 py-4 text-lg font-semibold text-white shadow-sm transition hover:bg-[#02275A]">
+          <a href="https://form.jotform.com/240354605024143" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-[#C9356C] px-8 py-4 text-lg font-semibold text-white shadow-lg transition hover:bg-[#8A4A8F] hover:shadow-xl hover:-translate-y-0.5">
             Make a Donation
           </a>
         </div>
@@ -117,11 +123,11 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
     </div>
   </section>
 
-  <section class="bg-white py-20">
+  <section class="bg-gradient-to-b from-[#B15A8A] to-[#7A5BAC] py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-extrabold font-display text-[#02275A]">Ways to Give</h2>
-        <div class="mt-6 space-y-5 text-lg leading-relaxed text-slate-700">
+        <h2 class="text-3xl font-extrabold font-display text-white">Ways to Give</h2>
+        <div class="mt-6 space-y-5 text-lg leading-relaxed text-[#F6EEFB]">
           <p>
             Beyond one-time gifts, there are many ways to support OLLI at Hampton University. You can make a tax-deductible gift through an annual contribution or by including OLLI in your long-term giving plans.
           </p>
@@ -136,17 +142,17 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
     </div>
   </section>
 
-  <section class="bg-gradient-to-b from-[#F5F8FD] to-white py-16">
+  <section class="bg-gradient-to-b from-[#7A5BAC] to-[#02275A] py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-[#004ADD]/40 to-transparent"></div>
-      <h2 class="mt-8 text-3xl font-extrabold font-display text-[#02275A]">Thank You</h2>
-      <p class="mt-6 text-lg leading-relaxed text-slate-700 max-w-3xl mx-auto">
+      <div class="mx-auto h-px w-16 bg-gradient-to-r from-transparent via-white/60 to-transparent"></div>
+      <h2 class="mt-8 text-3xl font-extrabold font-display text-white">Thank You</h2>
+      <p class="mt-6 text-lg leading-relaxed text-[#F3EFFB] max-w-3xl mx-auto">
         Thank you for your generosity and commitment to lifelong learning. Your support helps OLLI continue creating opportunities for education, connection, and personal growth for our members and community.
       </p>
       <div class="mt-10 pt-2">
-        <p class="text-sm text-slate-500">
-          Questions? Contact <span class="font-semibold text-[#02275A]">Alisha Beverley </span>
-          <a href="mailto:alisha.beverley@hamptonu.edu" class="font-semibold text-[#004ADD] underline decoration-1 underline-offset-2 hover:text-[#02275A] transition">alisha.beverley@hamptonu.edu</a>
+        <p class="text-sm text-white/80">
+          Questions? Email us at&nbsp;
+          <a href="mailto:osherhamptonu@gmail.com" class="font-semibold text-white underline decoration-1 underline-offset-2 hover:text-[#FBE8F2] transition">osherhamptonu@gmail.com</a>
         </p>
       </div>
     </div>

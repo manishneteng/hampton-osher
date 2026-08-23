@@ -2,19 +2,81 @@
 
 @theme {
   --font-display: "Playfair Display", serif;
+
+  /* ============================================================
+     Color system — OLLI at Hampton University
+     ------------------------------------------------------------------
+     Hierarchy (restrained "Committed" palette — brand stays blue,
+     warmth is layered through accent + surfaces, never rainbow):
+
+       1. BRAND  — Hampton blue / deep navy   primary actions, links,
+                  dark sections, headings
+       2. GOLD   — warm ochre                 highlights, CTAs,
+                  small accents (warmth + energy)
+       3. TEAL   — sage/teal                  learning & community
+                  sections
+       4. TERRACOTTA — warm coral             occasional energy,
+                  small doses only
+       5. SURFACES — cream / ivory / sky / mist   section & page
+                  backgrounds (warmer than pure white)
+       6. INK    — deep navy / charcoal       text, with tonal steps
+
+     Tints are the "-soft" values (for section backgrounds & subtle
+     fills). Strong-but-accessible mid values are "-strong" (for
+     borders & text-on-light). Deepest are "-deep".
+     ============================================================ */
+
+  /* 1. Brand primaries */
+  --color-brand: #004ADD;
+  --color-brand-dark: #02275A;
+  --color-brand-deep: #031A42;
+  --color-brand-soft: #E8F0FE;
+
+  /* 2. Gold / ochre accent */
+  --color-gold: #C1922F;
+  --color-gold-strong: #A87A1E;
+  --color-gold-deep: #8A5F10;
+  --color-gold-soft: #F5EBD2;
+
+  /* 3. Teal / sage secondary */
+  --color-teal: #1F7A6E;
+  --color-teal-strong: #16645C;
+  --color-teal-deep: #10514A;
+  --color-teal-soft: #E0EFEA;
+
+  /* 4. Terracotta energy accent */
+  --color-terracotta: #C2603B;
+  --color-terracotta-strong: #A84B2A;
+  --color-terracotta-deep: #83371E;
+  --color-terracotta-soft: #F6E2D8;
+
+  /* 5. Surfaces / backgrounds */
+  --color-cream: #FAF5EC;
+  --color-ivory: #FEFCF7;
+  --color-sky: #EDF3F9;
+  --color-mist: #F5F8FD;
+
+  /* 6. Text */
+  --color-ink: #1E262F;
+  --color-ink-soft: #3E4A58;
+  --color-ink-faint: #5C6B7A;
+
+  /* Borders */
+  --color-line: #E6E0D4;
+  --color-line-cool: #DCE3EC;
 }
 
 :root {
   color-scheme: light;
-  color: #25303B;
+  color: var(--color-ink, #25303B);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #F5F8FD;
-  --brand: #004ADD;
-  --brand-dark: #02275A;
-  --surface: #ffffff;
-  --surface-muted: #F8FAFC;
-  --text: #25303B;
-  --text-muted: #475569;
+  background: var(--color-mist, #F5F8FD);
+  --brand: var(--color-brand, #004ADD);
+  --brand-dark: var(--color-brand-dark, #02275A);
+  --surface: var(--color-ivory, #ffffff);
+  --surface-muted: var(--color-cream, #F8FAFC);
+  --text: var(--color-ink, #25303B);
+  --text-muted: var(--color-ink-soft, #475569);
 }
 
 html {
