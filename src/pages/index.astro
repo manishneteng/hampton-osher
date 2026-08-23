@@ -450,11 +450,15 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
                 const pag = this.pagination?.el;
                 const active = pag?.querySelector('.swiper-pagination-bullet-active');
                 if (active && pag && pag.scrollWidth > pag.clientWidth) {
-                  active.scrollIntoView({
-                    block: 'nearest',
-                    inline: 'center',
-                    behavior: 'smooth',
-                  });
+                  // Scroll ONLY the pagination strip to keep the active bullet in
+                  // view. Do NOT use scrollIntoView here: the swiper container
+                  // itself is horizontally scrollable (it holds every catalog
+                  // page), and scrollIntoView scrolls ALL scrollable ancestors,
+                  // which accumulates a scrollLeft on the carousel and pushes the
+                  // later pages off to the left / outside their container.
+                  const targetLeft =
+                    active.offsetLeft - (pag.clientWidth - active.offsetWidth) / 2;
+                  pag.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
                 }
               },
             },
