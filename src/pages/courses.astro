@@ -407,8 +407,10 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       max-width: none !important;
     }
 
-    /* Pagination — keep every dot on a single line, centered, never overflowing the page */
-    #catalog-swiper .swiper-pagination {
+    /* Pagination — keep every dot on a single line, centered, never overflowing the page.
+       These selectors are :global because Swiper injects the .swiper-pagination-bullet
+       elements at runtime, so Astro's scoped data-astro-cid attributes never reach them. */
+    :global(#catalog-swiper .swiper-pagination) {
       display: flex;
       flex-wrap: nowrap;
       align-items: center;
@@ -424,10 +426,10 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       -ms-overflow-style: none;
       scroll-behavior: smooth;
     }
-    #catalog-swiper .swiper-pagination::-webkit-scrollbar {
+    :global(#catalog-swiper .swiper-pagination::-webkit-scrollbar) {
       display: none;
     }
-    #catalog-swiper .swiper-pagination .swiper-pagination-bullet {
+    :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet) {
       flex: 0 0 auto;
       width: 9px;
       height: 9px;
@@ -437,16 +439,16 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       box-shadow: none;
       transition: background 0.25s ease, transform 0.25s ease;
     }
-    #catalog-swiper .swiper-pagination .swiper-pagination-bullet-active {
+    :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet-active) {
       background: #004add;
       transform: scale(1.2);
     }
     @media (max-width: 767px) {
-      #catalog-swiper .swiper-pagination {
+      :global(#catalog-swiper .swiper-pagination) {
         gap: 5px;
         padding-top: 6px;
       }
-      #catalog-swiper .swiper-pagination .swiper-pagination-bullet {
+      :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet) {
         width: 8px;
         height: 8px;
       }

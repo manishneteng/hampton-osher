@@ -356,6 +356,53 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
     #catalog-swiper.md\:two-up .cover-slide > div {
       max-width: none !important;
     }
+
+    /* Pagination — keep every dot on a single line, centered, never overflowing the page.
+       These selectors are :global because Swiper injects the .swiper-pagination-bullet
+       elements at runtime, so Astro's scoped data-astro-cid attributes never reach them. */
+    :global(#catalog-swiper .swiper-pagination) {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      max-width: 100%;
+      margin-inline: auto;
+      padding: 6px 0 2px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+    :global(#catalog-swiper .swiper-pagination::-webkit-scrollbar) {
+      display: none;
+    }
+    :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet) {
+      flex: 0 0 auto;
+      width: 9px;
+      height: 9px;
+      border-radius: 9999px;
+      background: rgba(2, 39, 90, 0.32);
+      opacity: 1;
+      box-shadow: none;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet-active) {
+      background: #004add;
+      transform: scale(1.2);
+    }
+    @media (max-width: 767px) {
+      :global(#catalog-swiper .swiper-pagination) {
+        gap: 5px;
+        padding-top: 6px;
+      }
+      :global(#catalog-swiper .swiper-pagination .swiper-pagination-bullet) {
+        width: 8px;
+        height: 8px;
+      }
+    }
   </style>
 
   <script>
@@ -398,6 +445,17 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
               },
               resize: function () {
                 this.el.classList.toggle('md\\:two-up', isDesktop());
+              },
+              slideChange: function () {
+                const pag = this.pagination?.el;
+                const active = pag?.querySelector('.swiper-pagination-bullet-active');
+                if (active && pag && pag.scrollWidth > pag.clientWidth) {
+                  active.scrollIntoView({
+                    block: 'nearest',
+                    inline: 'center',
+                    behavior: 'smooth',
+                  });
+                }
               },
             },
           });
