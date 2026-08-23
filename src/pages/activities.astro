@@ -16,10 +16,11 @@ import v2 from '../images/Vendor2.png';
 import v3 from '../images/Vendor3.png';
 import v4 from '../images/Vendor4.png';
 import v5 from '../images/Vendor5.png';
+import v6 from '../images/Vendor6.png';
 
 const gallery = [act1, act2, act3, act4];
 const trips = [trip1, trip2, trip3, trip4, trip5, trip6];
-const vendors = [v1, v2, v3, v4, v5];
+const vendors = [v1, v2, v3, v4, v5, v6];
 ---
 
 <Layout>
@@ -143,7 +144,7 @@ const vendors = [v1, v2, v3, v4, v5];
       </div>
 
       <div class="mt-12">
-        <div class="hidden sm:grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+        <div class="hidden sm:grid gap-4 sm:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           {vendors.map((img) => (
             <div class="overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
@@ -153,7 +154,7 @@ const vendors = [v1, v2, v3, v4, v5];
         <div class="swiper sm:!hidden" id="vendors-gallery">
           <div class="swiper-wrapper">
             {vendors.map((img) => (
-              <div class="swiper-slide overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <div class="swiper-slide aspect-square overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
                 <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
               </div>
             ))}
