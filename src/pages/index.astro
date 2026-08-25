@@ -11,13 +11,13 @@ import strip3 from '../images/Strip3.png';
 import strip4 from '../images/Strip4.jpg';
 import strip5 from '../images/Strip5.jpg';
 import strip6 from '../images/Strip6.png';
-import Group16 from '../images/GroupPhotos/Group16.jpg';
-import Group2 from '../images/GroupPhotos/Group2.jpeg';
-import Group21 from '../images/GroupPhotos/Group21.png';
-import Group15 from '../images/GroupPhotos/Group15.jpg';
-import Group13 from '../images/GroupPhotos/Group13.jpg';
-import Group18 from '../images/GroupPhotos/Group18.jpg';
-import Group28 from '../images/GroupPhotos/Group28.jpg';
+import Group40 from '../images/GroupPhotos/Group40.jpg';
+import Group41 from '../images/GroupPhotos/Group41.png';
+import Group43 from '../images/GroupPhotos/Group43.jpg';
+import Group44 from '../images/GroupPhotos/Group44.jpeg';
+import Group45 from '../images/GroupPhotos/Group45.jpg';
+import Group46 from '../images/GroupPhotos/Group46.jpg';
+import OpenHouse from '../images/GroupPhotos/OpenHouse.MOV';
 
 const catalogImages = Object.entries(
   import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
@@ -134,12 +134,12 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </p>
         </div>
         <div class="grid grid-cols-3 gap-3">
-          <img src={Group16.src} alt="OLLI members learning together in a group session" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
-          <img src={Group2.src} alt="Community members gathered and smiling" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
-          <img src={Group21.src} alt="Curious adult learners in a lively discussion" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
-          <img src={Group15.src} alt="Friends enjoying an OLLI activity together" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
-          <img src={Group13.src} alt="Engaged members collaborating on a shared interest" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
-          <img src={Group18.src} alt="Smiling members celebrating lifelong learning" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group40.src} alt="OLLI members smiling together during a group class session" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group41.src} alt="Adult learners gathered casually and enjoying one another's company" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group43.src} alt="Community members listening attentively during an OLLI discussion" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group44.src} alt="Friends chatting warmly at an OLLI social gathering" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group45.src} alt="Engaged members participating in an interactive group activity" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
+          <img src={Group46.src} alt="Smiling learners celebrating together after a shared experience" class="rounded-lg object-cover h-32 md:h-40 w-full transition-transform hover:scale-[1.03] hover:shadow-md" loading="lazy" />
         </div>
       </div>
     </div>
@@ -193,12 +193,17 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
           </blockquote>
         </div>
         <div class="overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-[0_8px_32px_rgba(2,39,90,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/60 hover:shadow-[0_12px_40px_rgba(2,39,90,0.25)]">
-          <img
-            src={Group28.src}
-            alt="OLLI members connecting and sharing a moment together"
+          <video
+            id="openhouse-video"
+            src={OpenHouse}
+            autoplay
+            muted
+            loop
+            playsInline
+            preload="auto"
             class="h-64 w-full object-cover md:h-full min-h-[20rem]"
-            loading="lazy"
-          />
+            aria-label="OLLI open house video"
+          ></video>
         </div>
       </div>
     </div>
@@ -468,5 +473,41 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
         swiperInstance.update();
       }
     });
+  </script>
+
+  <script>
+    // Reliable muted autoplay for the open house video. The autoplay attribute
+    // alone is not guaranteed to start playback across all browsers/engines, so
+    // we explicitly call play() once the video has enough data. It stays muted
+    // at all times (required for autoplay) and loops continuously.
+    (function () {
+      const video = document.getElementById('openhouse-video');
+      if (!video) return;
+
+      const startPlayback = () => {
+        // Keep it muted so autoplay is always allowed by the browser.
+        video.muted = true;
+        const promise = video.play();
+        if (promise && promise.catch) {
+          // Browsers may reject a play() call if it fires too early; retry once
+          // more after a tick rather than surfacing an unhandled rejection.
+          promise.catch(() => {
+            window.setTimeout(() => {
+              video.play().catch(() => {});
+            }, 250);
+          });
+        }
+      };
+
+      if (video.readyState >= 2) {
+        startPlayback();
+      } else {
+        video.addEventListener('loadeddata', startPlayback, { once: true });
+        // Fall back if the event never fires.
+        window.setTimeout(() => {
+          if (video.paused) startPlayback();
+        }, 500);
+      }
+    })();
   </script>
 </Layout>
