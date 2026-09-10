@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import WaysToGiveBG from '../images/WaystoGiveBG.png';
+import WaysToGiveBG from '../images/WaystoGiveBG.webp';
 ---
 
 <Layout>
@@ -12,6 +12,8 @@ import WaysToGiveBG from '../images/WaystoGiveBG.png';
         src={WaysToGiveBG.src}
         alt=""
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <!-- Stronger overlay for text pop -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>

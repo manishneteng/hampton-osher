@@ -2,31 +2,25 @@
 import Layout from '../layouts/Layout.astro';
 import VolunteerCard from '../components/VolunteerCard.astro';
 import OsherLogo from '../images/Osher20Logo.png';
-import HeroBG from '../images/HeroBG.png';
-import CourseCatalogImg from '../images/CourseCatalog/1.png';
-import InterestGroupImg from '../images/CourseCatalog/10.png';
-import strip1 from '../images/Strip1.png';
-import strip2 from '../images/Strip2.png';
-import strip3 from '../images/Strip3.png';
-import strip4 from '../images/Strip4.jpg';
-import strip5 from '../images/Strip5.jpg';
-import strip6 from '../images/Strip6.png';
-import Group40 from '../images/GroupPhotos/Group40.jpg';
-import Group37 from '../images/GroupPhotos/Group37.png';
-import Group43 from '../images/GroupPhotos/Group43.jpg';
-import Group44 from '../images/GroupPhotos/Group44.jpeg';
-import Group45 from '../images/GroupPhotos/Group45.jpg';
-import Group46 from '../images/GroupPhotos/Group46.jpg';
-import Group47 from '../images/GroupPhotos/Group47.png';
-import Group48 from '../images/GroupPhotos/Group48.png';
+import HeroBG from '../images/HeroBG.webp';
+import CourseCatalogImg from '../images/CourseCatalog/1.webp';
+import InterestGroupImg from '../images/CourseCatalog/10.webp';
+import Group40 from '../images/GroupPhotos/Group40.webp';
+import Group37 from '../images/GroupPhotos/Group37.webp';
+import Group43 from '../images/GroupPhotos/Group43.webp';
+import Group44 from '../images/GroupPhotos/Group44.webp';
+import Group45 from '../images/GroupPhotos/Group45.webp';
+import Group46 from '../images/GroupPhotos/Group46.webp';
+import Group47 from '../images/GroupPhotos/Group47.webp';
+import Group48 from '../images/GroupPhotos/Group48.webp';
 import OpenHouse from '../images/GroupPhotos/OpenHouse.MOV';
 
 const catalogImages = Object.entries(
-  import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
+  import.meta.glob('../images/CourseCatalog/*.webp', { eager: true, query: '?url', import: 'default' })
 )
   .sort(([a], [b]) => {
-    const numA = parseInt(a.match(/(\d+)\.png$/)?.[1] || '0');
-    const numB = parseInt(b.match(/(\d+)\.png$/)?.[1] || '0');
+    const numA = parseInt(a.match(/(\d+)\.webp$/)?.[1] || '0');
+    const numB = parseInt(b.match(/(\d+)\.webp$/)?.[1] || '0');
     return numA - numB;
   })
   .map(([, src]) => src);
@@ -45,6 +39,8 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
         src={HeroBG.src}
         alt="OLLI members engaged in a lifelong learning lecture"
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <!-- Stronger overlay for text pop -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>

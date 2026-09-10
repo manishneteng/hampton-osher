@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import DonorsBG from '../images/DonorsBG.png';
+import DonorsBG from '../images/DonorsBG.webp';
 ---
 
 <Layout>
@@ -12,6 +12,8 @@ import DonorsBG from '../images/DonorsBG.png';
         src={DonorsBG.src}
         alt=""
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <!-- Stronger overlay for text pop -->
       <div class="absolute inset-0 bg-gradient-to-t from-[#031A42] via-[#02275A]/85 to-[#02275A]/60"></div>
@@ -23,6 +25,9 @@ import DonorsBG from '../images/DonorsBG.png';
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]" style="text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 0 1px rgba(255,255,255,0.1);">
         Our Donors
       </h1>
+      <p class="mt-4 text-base sm:text-xl font-display font-semibold uppercase tracking-[0.3em] text-[#F5EBD2]">
+        2024&ndash;25
+      </p>
       <p class="mt-6 text-lg text-white/80 max-w-3xl mx-auto leading-relaxed">
         We extend our heartfelt appreciation to the generous individuals and families whose support has helped advance the mission of the Osher Lifelong Learning Institute at Hampton University.
       </p>

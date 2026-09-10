@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FaqBG from '../images/FaqBG.png';
+import FaqBG from '../images/FaqBG.webp';
 ---
 
 <Layout>
@@ -11,6 +11,8 @@ import FaqBG from '../images/FaqBG.png';
         src={FaqBG.src}
         alt="OLLI community gathering"
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>

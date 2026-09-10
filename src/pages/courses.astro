@@ -1,21 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import CoursesBG from '../images/CoursesBG.png';
-import Group13 from '../images/GroupPhotos/Group13.jpg';
-import Group23 from '../images/GroupPhotos/Group23.jpg';
-import Group12 from '../images/GroupPhotos/Group12.jpg';
-import Group24 from '../images/GroupPhotos/Group24.png';
-import Group4 from '../images/GroupPhotos/Group4.jpeg';
-import Group10 from '../images/GroupPhotos/Group10.jpg';
-import Group9 from '../images/GroupPhotos/Group9.jpeg';
-import Group26 from '../images/GroupPhotos/Group26.png';
+import CoursesBG from '../images/CoursesBG.webp';
+import Group13 from '../images/GroupPhotos/Group13.webp';
+import Group23 from '../images/GroupPhotos/Group23.webp';
+import Group12 from '../images/GroupPhotos/Group12.webp';
+import Group24 from '../images/GroupPhotos/Group24.webp';
+import Group4 from '../images/GroupPhotos/Group4.webp';
+import Group10 from '../images/GroupPhotos/Group10.webp';
+import Group9 from '../images/GroupPhotos/Group9.webp';
+import Group26 from '../images/GroupPhotos/Group26.webp';
 
 const catalogImages = Object.entries(
-  import.meta.glob('../images/CourseCatalog/*.png', { eager: true, query: '?url', import: 'default' })
+  import.meta.glob('../images/CourseCatalog/*.webp', { eager: true, query: '?url', import: 'default' })
 )
   .sort(([a], [b]) => {
-    const numA = parseInt(a.match(/(\d+)\.png$/)?.[1] || '0');
-    const numB = parseInt(b.match(/(\d+)\.png$/)?.[1] || '0');
+    const numA = parseInt(a.match(/(\d+)\.webp$/)?.[1] || '0');
+    const numB = parseInt(b.match(/(\d+)\.webp$/)?.[1] || '0');
     return numA - numB;
   })
   .map(([, src]) => src);
@@ -33,6 +33,8 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
         src={CoursesBG.src}
         alt="OLLI course catalog"
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>

@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import AboutBG from '../images/AboutBG.png';
-import SpotlightMember from '../images/SpotlightMember.png';
-import Group41 from '../images/GroupPhotos/Group41.png';
-import Group8 from '../images/GroupPhotos/Group8.jpeg';
-import Group31 from '../images/GroupPhotos/Group31.jpg';
-import Group36 from '../images/GroupPhotos/Group36.jpeg';
+import AboutBG from '../images/AboutBG.webp';
+import SpotlightMember from '../images/SpotlightMember.webp';
+import Group41 from '../images/GroupPhotos/Group41.webp';
+import Group8 from '../images/GroupPhotos/Group8.webp';
+import Group31 from '../images/GroupPhotos/Group31.webp';
+import Group36 from '../images/GroupPhotos/Group36.webp';
 ---
 
 <Layout>
@@ -16,6 +16,8 @@ import Group36 from '../images/GroupPhotos/Group36.jpeg';
         src={AboutBG.src}
         alt="OLLI members in community"
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>

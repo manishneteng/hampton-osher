@@ -1,28 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TravelBG from '../images/TravelBG.png';
-import act1 from '../images/CourseCatalog/22.png';
-import act2 from '../images/CourseCatalog/23.png';
-import act3 from '../images/CourseCatalog/24.png';
-import act4 from '../images/CourseCatalog/25.png';
-import trip1 from '../images/Trip1.png';
-import trip2 from '../images/Trip2.png';
-import trip3 from '../images/Trip3.png';
-import trip4 from '../images/Trip4.png';
-import trip5 from '../images/Trip5.png';
-import trip6 from '../images/Trip6.png';
-import v1 from '../images/Vendor1.png';
-import v2 from '../images/Vendor2.png';
-import v3 from '../images/Vendor3.png';
-import v4 from '../images/Vendor4.png';
-import v5 from '../images/Vendor5.png';
-import v6 from '../images/Vendor6.png';
-import v7 from '../images/Vendor7.png';
-import v8 from '../images/Vendor8.png';
+import TravelBG from '../images/TravelBG.webp';
+import act1 from '../images/CourseCatalog/22.webp';
+import act2 from '../images/CourseCatalog/23.webp';
+import act3 from '../images/CourseCatalog/24.webp';
+import act4 from '../images/CourseCatalog/25.webp';
+import trip1 from '../images/Trip1.webp';
+import trip2 from '../images/Trip2.webp';
+import trip3 from '../images/Trip3.webp';
+import trip4 from '../images/Trip4.webp';
+import trip5 from '../images/Trip5.webp';
+import trip6 from '../images/Trip6.webp';
+import v1 from '../images/Vendor1.webp';
+import v2 from '../images/Vendor2.webp';
+import v3 from '../images/Vendor3.webp';
+import v4 from '../images/Vendor4.webp';
+import v5 from '../images/Vendor5.webp';
+import v6 from '../images/Vendor6.webp';
+import v7 from '../images/Vendor7.webp';
+import v8 from '../images/Vendor8.webp';
+import v9 from '../images/Vendor9.webp';
 
 const gallery = [act1, act2, act3, act4];
 const trips = [trip1, trip2, trip3, trip4, trip5, trip6];
-const vendors = [v1, v2, v3, v4, v5, v6, v7, v8];
+const vendors = [v1, v2, v3, v4, v5, v6, v7, v8, v9];
+// Vendor8/Vendor9 are square logos with transparent backgrounds, so they are
+// fitted (contain) on the frosted-white tile; the rest are opaque square
+// artwork that can keep filling (cover) their tile.
+const containVendors = new Set([v8, v9]);
 ---
 
 <Layout>
@@ -33,6 +38,8 @@ const vendors = [v1, v2, v3, v4, v5, v6, v7, v8];
         src={TravelBG.src}
         alt="OLLI travel and activities"
         class="h-full w-full object-cover blur-sm scale-110"
+        decoding="async"
+        fetchpriority="high"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-[#02275A]/90 via-[#02275A]/70 to-[#02275A]/45"></div>
       <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
@@ -146,18 +153,28 @@ const vendors = [v1, v2, v3, v4, v5, v6, v7, v8];
       </div>
 
       <div class="mt-12">
-        <div class="hidden sm:grid gap-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-8">
-          {vendors.map((img, i) => (
-            <div class={`overflow-hidden rounded-2xl border border-white/40 ${i === vendors.length - 1 ? 'bg-white' : 'bg-white/15'} shadow-sm transition hover:-translate-y-0.5 hover:shadow-md`}>
-              <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
+        <div class="hidden sm:grid gap-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-9">
+          {vendors.map((img) => (
+            <div class="aspect-square overflow-hidden rounded-2xl border border-white/40 bg-white p-2 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md">
+              <img
+                src={img.src}
+                alt="Event vendor"
+                class={`h-full w-full ${containVendors.has(img) ? 'object-contain' : 'object-cover'}`}
+                loading="lazy"
+              />
             </div>
           ))}
         </div>
         <div class="swiper sm:!hidden" id="vendors-gallery">
           <div class="swiper-wrapper">
-            {vendors.map((img, i) => (
-              <div class={`swiper-slide aspect-square overflow-hidden rounded-2xl border border-white/40 ${i === vendors.length - 1 ? 'bg-white' : 'bg-white/15'} shadow-sm transition hover:-translate-y-0.5 hover:shadow-md`}>
-                <img src={img.src} alt="Event vendor" class="aspect-square w-full object-cover" loading="lazy" />
+            {vendors.map((img) => (
+              <div class="swiper-slide aspect-square overflow-hidden rounded-2xl border border-white/40 bg-white p-3 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                <img
+                  src={img.src}
+                  alt="Event vendor"
+                  class={`h-full w-full ${containVendors.has(img) ? 'object-contain' : 'object-cover'}`}
+                  loading="lazy"
+                />
               </div>
             ))}
           </div>
