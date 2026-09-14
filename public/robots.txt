@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://osher.hamptonu.edu/sitemap-index.xml

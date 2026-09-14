@@ -1,9 +1,88 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import FaqBG from '../images/FaqBG.webp';
+
+// Questions and answers mirror the visible <details> content below verbatim.
+// Google requires FAQ structured data to match what users actually see.
+const faqs = [
+  {
+    q: 'What are the main office hours?',
+    a: 'Monday – Friday: 8:00 AM–5:00 PM',
+  },
+  {
+    q: 'How do I become a member?',
+    a: 'You may sign up in person at the main office or via the website. To join online, click the link “Join OLLI-HU”, fill out the form, and pay your dues.',
+  },
+  {
+    q: 'How can members volunteer?',
+    a: 'Activities are organized and operated by our members. As a democratic membership organization, OLLI at HU depends on the volunteer services of its members. Volunteering brings involvement in the Institute in meaningful and satisfying ways.',
+  },
+  {
+    q: 'Can members bring a guest to classes or activities?',
+    a: 'OLLI classes and activities are designed for members only. However, members may bring a guest for a one-time visit as a class auditor; the guest may attend as long as they pay the appropriate fee and are approved by OLLI at HU staff.',
+  },
+  {
+    q: 'Where are classes located?',
+    a: 'Classes are held at the W.O. Lawton Building and various local satellite locations, depending on the schedule for each term.',
+  },
+  {
+    q: 'Do members need parking passes?',
+    a: 'When attending day and/or overnight trips, a parking pass is required and should be obtained in advance through the appropriate office or event instructions.',
+  },
+  {
+    q: 'Can accommodations be provided for accessibility needs?',
+    a: 'We are dedicated to making our courses and events accessible to all participants. Please contact us in advance so we can coordinate accommodations that support your participation and comfort.',
+  },
+  {
+    q: 'What is the inclement weather policy?',
+    a: 'Please check the Hampton University website for the latest information regarding weather-related closures or schedule changes.',
+  },
+  {
+    q: 'How do I sign up for trips?',
+    a: 'Trip registration must be completed through the OLLI office. Please visit or contact our office to sign up for trips.',
+  },
+  {
+    q: 'What is the refund and credit policy?',
+    a: 'No refunds or credits will be given for local, overnight trips, and movie days. Please review event-specific policies before registering.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'FAQPage',
+    '@id': 'https://osher.hamptonu.edu/faq/#faq',
+    mainEntity: faqs.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    '@id': 'https://osher.hamptonu.edu/faq/#breadcrumb',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: 'https://osher.hamptonu.edu/',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Frequently Asked Questions',
+        item: 'https://osher.hamptonu.edu/faq/',
+      },
+    ],
+  },
+];
 ---
 
-<Layout>
+<Layout
+  title="Frequently Asked Questions | OLLI at Hampton University"
+  description="Find answers to common questions about OLLI at Hampton University membership, annual dues, course registration, accessibility, and day-to-day participation."
+  {schema}
+>
   <!-- ====== Hero ====== -->
   <section class="relative flex min-h-[55vh] items-center overflow-hidden lg:min-h-[65vh]">
     <div class="absolute inset-0">

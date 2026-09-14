@@ -6,9 +6,22 @@ import Group41 from '../images/GroupPhotos/Group41.webp';
 import Group8 from '../images/GroupPhotos/Group8.webp';
 import Group31 from '../images/GroupPhotos/Group31.webp';
 import Group36 from '../images/GroupPhotos/Group36.webp';
+
+const schema = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://osher.hamptonu.edu/about/#breadcrumb',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://osher.hamptonu.edu/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: 'https://osher.hamptonu.edu/about/' },
+  ],
+};
 ---
 
-<Layout>
+<Layout
+  title="About OLLI at Hampton University | Lifelong Learning in Hampton Roads"
+  description="Learn how OLLI at Hampton University brings the Bernard Osher Foundation's national lifelong learning network to adults 50 and better across the Hampton Roads area."
+  {schema}
+>
   <!-- ====== Hero ====== -->
   <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
     <div class="absolute inset-0">

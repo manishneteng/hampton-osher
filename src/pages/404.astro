@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Page Not Found | OLLI at Hampton University"
+  description="The page you are looking for could not be found. Explore OLLI at Hampton University courses, activities, and membership information instead."
+  canonicalPath="/"
+  noIndex
+>
+  <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[65vh]">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#02275A] via-[#02275A] to-[#031A42]"></div>
+      <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] max-w-full opacity-[0.2]" style="background: radial-gradient(ellipse 50% 50% at center, #004ADD 0%, transparent 70%);"></div>
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-3xl px-4 pb-16 pt-24 text-center sm:px-6 lg:px-8">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#93C5FD]">404</p>
+      <h1 class="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display text-white leading-tight tracking-[-0.02em]">
+        We couldn't find that page
+      </h1>
+      <p class="mt-6 text-lg text-white/80 leading-relaxed">
+        The page may have moved, or the link may be out of date. The good news is there is
+        plenty left to explore.
+      </p>
+
+      <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a href="/" class="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-lg font-semibold text-[#02275A] shadow-lg transition hover:bg-blue-50 hover:shadow-xl hover:-translate-y-0.5">
+          Back to Home
+        </a>
+        <a href="/courses" class="inline-flex items-center justify-center rounded-full border border-white bg-white/10 px-8 py-4 text-lg font-semibold text-white transition hover:bg-white/20">
+          Browse Courses
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

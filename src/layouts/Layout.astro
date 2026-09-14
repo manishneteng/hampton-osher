@@ -4,6 +4,125 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ClientRouter from 'astro/components/ClientRouter.astro';
 import OsherLogo from '../images/Osher20Logo.png';
+
+// Canonical production origin. The Cloudflare Pages preview domain
+// (*.pages.dev) must never be used as the canonical URL.
+const SITE_URL = 'https://osher.hamptonu.edu';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path used to build the canonical URL. Defaults to the current pathname. */
+  canonicalPath?: string;
+  /**
+   * Extra schema.org nodes to merge into this page's JSON-LD @graph.
+   * Global Organization/WebSite/WebPage nodes are added automatically.
+   */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Set on the 404 page so it is not described as a normal indexable page. */
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalPath = Astro.url.pathname,
+  schema,
+  noIndex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(canonicalPath, SITE_URL).href;
+const ogImageURL = new URL(OsherLogo.src, SITE_URL).href;
+
+// Append the brand suffix only when the title does not already name the
+// institute, so social titles never read "... OLLI at Hampton University |
+// OLLI at Hampton University".
+const socialTitle = /hampton university/i.test(title)
+  ? title
+  : `${title} | OLLI at Hampton University`;
+
+// ---------------------------------------------------------------------------
+// Structured data (schema.org JSON-LD)
+//
+// Only facts that already appear on the site are asserted:
+//   - name/phone/email/address/hours  -> Footer.astro
+//   - sameAs (Facebook group)         -> Footer.astro
+//   - parentOrganization              -> About page + Footer.astro
+// Organization and WebSite are emitted on every page so search engines get a
+// stable entity definition regardless of the entry point. WebPage is emitted
+// per route and linked back to both via @id.
+// ---------------------------------------------------------------------------
+const ORG_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+
+const organizationSchema = {
+  '@type': 'EducationalOrganization',
+  '@id': ORG_ID,
+  name: 'Osher Lifelong Learning Institute at Hampton University',
+  alternateName: 'OLLI at Hampton University',
+  url: `${SITE_URL}/`,
+  logo: ogImageURL,
+  image: ogImageURL,
+  description:
+    'A membership-driven community offering affordable, non-credit courses for adults 50 and better in the Hampton Roads area.',
+  email: 'osherhamptonu@gmail.com',
+  telephone: '+1-757-727-5434',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '1006-H Settlers Landing Road',
+    addressLocality: 'Hampton',
+    addressRegion: 'VA',
+    postalCode: '23668',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'AdministrativeArea',
+    name: 'Hampton Roads, Virginia',
+  },
+  parentOrganization: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Hampton University',
+    url: 'https://www.hamptonu.edu/',
+  },
+  sameAs: ['https://www.facebook.com/groups/227346789203791'],
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '08:00',
+    closes: '17:00',
+  },
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': WEBSITE_ID,
+  url: `${SITE_URL}/`,
+  name: 'OLLI at Hampton University',
+  description,
+  publisher: { '@id': ORG_ID },
+  inLanguage: 'en-US',
+};
+
+const webPageSchema = {
+  '@type': 'WebPage',
+  '@id': `${canonicalURL}#webpage`,
+  url: canonicalURL,
+  name: socialTitle,
+  description,
+  isPartOf: { '@id': WEBSITE_ID },
+  about: { '@id': ORG_ID },
+  inLanguage: 'en-US',
+};
+
+const schemaGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    organizationSchema,
+    websiteSchema,
+    webPageSchema,
+    ...(Array.isArray(schema) ? schema : schema ? [schema] : []),
+  ],
+};
 ---
 
 <!DOCTYPE html>
@@ -11,8 +130,26 @@ import OsherLogo from '../images/Osher20Logo.png';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Osher Lifelong Learning Institute</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    {noIndex && <meta name="robots" content="noindex, follow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OLLI at Hampton University" />
+    <meta property="og:title" content={socialTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={socialTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
     <link rel="icon" type="image/png" href={OsherLogo.src} />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
     <ClientRouter />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
