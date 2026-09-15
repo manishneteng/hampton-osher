@@ -40,9 +40,10 @@ const schema = {
 ---
 
 <Layout
-  title="Activities, Interest Groups & Travel | OLLI at Hampton University"
-  description="Explore OLLI at Hampton University interest groups, day trips, and travel opportunities designed for adults 50 and better in the Hampton Roads community."
+  title="Activities & Travel | Osher Lifelong Learning Institute"
+  description="Interest groups, day trips, and travel with the Osher Lifelong Learning Institute at Hampton University, for adults 50 and better in Hampton Roads."
   {schema}
+  breadcrumbId="https://osher.hamptonu.edu/activities/#breadcrumb"
 >
   <!-- ====== Hero ====== -->
   <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
@@ -50,6 +51,8 @@ const schema = {
       <img
         src={TravelBG.src}
         alt="OLLI travel and activities"
+        width="2000"
+        height="1116"
         class="h-full w-full object-cover blur-sm scale-110"
         decoding="async"
         fetchpriority="high"

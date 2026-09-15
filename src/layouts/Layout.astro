@@ -19,6 +19,11 @@ interface Props {
    * Global Organization/WebSite/WebPage nodes are added automatically.
    */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /**
+   * @id of this page's BreadcrumbList node, when the page defines one. Lets the
+   * WebPage node reference the breadcrumb trail explicitly.
+   */
+  breadcrumbId?: string;
   /** Set on the 404 page so it is not described as a normal indexable page. */
   noIndex?: boolean;
 }
@@ -28,16 +33,20 @@ const {
   description,
   canonicalPath = Astro.url.pathname,
   schema,
+  breadcrumbId,
   noIndex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath, SITE_URL).href;
 const ogImageURL = new URL(OsherLogo.src, SITE_URL).href;
 
-// Append the brand suffix only when the title does not already name the
-// institute, so social titles never read "... OLLI at Hampton University |
-// OLLI at Hampton University".
-const socialTitle = /hampton university/i.test(title)
+// Social titles carry the institute name exactly once. A page title that
+// already names the institute (either in full or by the "OLLI at Hampton
+// University" form) is used verbatim; otherwise the brand is appended, so
+// social cards never read "... Osher Lifelong Learning Institute | OLLI at
+// Hampton University".
+const NAMES_INSTITUTE = /(osher lifelong learning institute|hampton university)/i;
+const socialTitle = NAMES_INSTITUTE.test(title)
   ? title
   : `${title} | OLLI at Hampton University`;
 
@@ -54,12 +63,13 @@ const socialTitle = /hampton university/i.test(title)
 // ---------------------------------------------------------------------------
 const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
+const HU_ID = 'https://www.hamptonu.edu/#organization';
 
 const organizationSchema = {
   '@type': 'EducationalOrganization',
   '@id': ORG_ID,
   name: 'Osher Lifelong Learning Institute at Hampton University',
-  alternateName: 'OLLI at Hampton University',
+  alternateName: ['OLLI at Hampton University', 'OLLI HU', 'Osher at Hampton University'],
   url: `${SITE_URL}/`,
   logo: ogImageURL,
   image: ogImageURL,
@@ -81,9 +91,14 @@ const organizationSchema = {
   },
   parentOrganization: {
     '@type': 'CollegeOrUniversity',
+    '@id': HU_ID,
     name: 'Hampton University',
     url: 'https://www.hamptonu.edu/',
   },
+  // The institute operates as a program of the university rather than a
+  // standalone body, so the relationship is stated in both directions.
+  memberOf: { '@id': HU_ID },
+  department: { '@id': HU_ID },
   sameAs: ['https://www.facebook.com/groups/227346789203791'],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -97,9 +112,11 @@ const websiteSchema = {
   '@type': 'WebSite',
   '@id': WEBSITE_ID,
   url: `${SITE_URL}/`,
-  name: 'OLLI at Hampton University',
+  name: 'Osher Lifelong Learning Institute at Hampton University',
+  alternateName: 'OLLI at Hampton University',
   description,
   publisher: { '@id': ORG_ID },
+  about: { '@id': ORG_ID },
   inLanguage: 'en-US',
 };
 
@@ -111,7 +128,11 @@ const webPageSchema = {
   description,
   isPartOf: { '@id': WEBSITE_ID },
   about: { '@id': ORG_ID },
+  mainEntityOfPage: canonicalURL,
   inLanguage: 'en-US',
+  // Link the page to its BreadcrumbList when the page supplies one, so the
+  // two nodes are explicitly associated instead of merely co-occurring.
+  ...(breadcrumbId ? { breadcrumb: { '@id': breadcrumbId } } : {}),
 };
 
 const schemaGraph = {
@@ -141,12 +162,16 @@ const schemaGraph = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="346" />
+    <meta property="og:image:alt" content="Osher Lifelong Learning Institute at Hampton University" />
     <meta property="og:locale" content="en_US" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={socialTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content="Osher Lifelong Learning Institute at Hampton University" />
 
     <link rel="icon" type="image/png" href={OsherLogo.src} />
     <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />

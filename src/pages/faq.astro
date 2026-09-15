@@ -51,6 +51,12 @@ const schema = [
   {
     '@type': 'FAQPage',
     '@id': 'https://osher.hamptonu.edu/faq/#faq',
+    url: 'https://osher.hamptonu.edu/faq/',
+    name: 'Frequently Asked Questions | Osher Lifelong Learning Institute at Hampton University',
+    isPartOf: { '@id': 'https://osher.hamptonu.edu/#website' },
+    about: { '@id': 'https://osher.hamptonu.edu/#organization' },
+    mainEntityOfPage: 'https://osher.hamptonu.edu/faq/',
+    inLanguage: 'en-US',
     mainEntity: faqs.map(({ q, a }) => ({
       '@type': 'Question',
       name: q,
@@ -79,9 +85,10 @@ const schema = [
 ---
 
 <Layout
-  title="Frequently Asked Questions | OLLI at Hampton University"
-  description="Find answers to common questions about OLLI at Hampton University membership, annual dues, course registration, accessibility, and day-to-day participation."
+  title="FAQ | Osher Lifelong Learning Institute at Hampton"
+  description="Answers about membership, annual dues, course registration, accessibility, and day-to-day participation at the Osher Lifelong Learning Institute at HU."
   {schema}
+  breadcrumbId="https://osher.hamptonu.edu/faq/#breadcrumb"
 >
   <!-- ====== Hero ====== -->
   <section class="relative flex min-h-[55vh] items-center overflow-hidden lg:min-h-[65vh]">

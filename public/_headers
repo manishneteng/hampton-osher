@@ -1,0 +1,29 @@
+# Cloudflare Pages headers for the OLLI at Hampton University site.
+#
+# Purpose: keep search engines pinned to the canonical production origin and
+# away from the *.pages.dev preview deployment, without altering anything a
+# visitor sees.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# The preview deployment shares the same built output as production, so its
+# canonicals already point at osher.hamptonu.edu. This header is belt-and-braces
+# so a preview URL can never be indexed even if a canonical were ever dropped.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+# Immutable hashed build assets: safe to cache aggressively.
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Crawler directives should track the deployed robots.txt, not a cached copy.
+/robots.txt
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=0, must-revalidate
+
+/sitemap-0.xml
+  Cache-Control: public, max-age=0, must-revalidate

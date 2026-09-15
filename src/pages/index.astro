@@ -31,7 +31,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
 ---
 
 <Layout
-  title="OLLI at Hampton University | Lifelong Learning for Adults 50+"
+  title="Osher Lifelong Learning Institute at Hampton University"
   description="The Osher Lifelong Learning Institute at Hampton University offers affordable, non-credit courses for adults 50 and better in Hampton Roads. No tests, no grades, no pressure."
 >
   <!-- ====== Hero ====== -->
@@ -41,6 +41,8 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
       <img
         src={HeroBG.src}
         alt="OLLI members engaged in a lifelong learning lecture"
+        width="2000"
+        height="1116"
         class="h-full w-full object-cover blur-sm scale-110"
         decoding="async"
         fetchpriority="high"
@@ -335,7 +337,7 @@ const isFirstInRightPair = (i) => i > 0 && i % 2 === 0;
                   {!isCover(idx) && isFirstInRightPair(idx) && <div class="pointer-events-none absolute inset-y-0 left-0 w-2 bg-gradient-to-r from-black/5 to-transparent z-10" />}
                   <img
                     src={img}
-                    alt={`OLLI Course Catalog page $${idx + 1}`}
+                    alt={`OLLI Course Catalog page ${idx + 1}`}
                     class="h-auto max-h-[75vh] w-full object-contain drop-shadow-[1px_0_4px_rgba(0,0,0,0.12)]"
                     style="background: linear-gradient(135deg, #fefefe 0%, #f8f6f0 100%);"
                     loading="lazy"

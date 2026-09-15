@@ -18,9 +18,10 @@ const schema = {
 ---
 
 <Layout
-  title="About OLLI at Hampton University | Lifelong Learning in Hampton Roads"
-  description="Learn how OLLI at Hampton University brings the Bernard Osher Foundation's national lifelong learning network to adults 50 and better across the Hampton Roads area."
+  title="About | Osher Lifelong Learning Institute at HU"
+  description="How the Osher Lifelong Learning Institute at Hampton University brings the Bernard Osher Foundation's national lifelong learning network to adults 50 and better."
   {schema}
+  breadcrumbId="https://osher.hamptonu.edu/about/#breadcrumb"
 >
   <!-- ====== Hero ====== -->
   <section class="relative flex min-h-[60vh] items-center overflow-hidden lg:min-h-[70vh]">
@@ -28,6 +29,8 @@ const schema = {
       <img
         src={AboutBG.src}
         alt="OLLI members in community"
+        width="2000"
+        height="1116"
         class="h-full w-full object-cover blur-sm scale-110"
         decoding="async"
         fetchpriority="high"
