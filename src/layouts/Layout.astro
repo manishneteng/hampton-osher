@@ -26,6 +26,12 @@ interface Props {
   breadcrumbId?: string;
   /** Set on the 404 page so it is not described as a normal indexable page. */
   noIndex?: boolean;
+  /**
+   * Suppresses the canonical link entirely. Only for non-indexable pages such
+   * as the 404, where claiming a canonical URL would be misleading - a 404
+   * page is not a duplicate of the page it might point at.
+   */
+  noCanonical?: boolean;
 }
 
 const {
@@ -35,6 +41,7 @@ const {
   schema,
   breadcrumbId,
   noIndex = false,
+  noCanonical = false,
 } = Astro.props;
 
 const canonicalURL = new URL(canonicalPath, SITE_URL).href;
@@ -69,7 +76,25 @@ const organizationSchema = {
   '@type': 'EducationalOrganization',
   '@id': ORG_ID,
   name: 'Osher Lifelong Learning Institute at Hampton University',
-  alternateName: ['OLLI at Hampton University', 'OLLI HU', 'Osher at Hampton University'],
+  // Every natural-language form searchers actually type, including the
+  // abbreviated and reversed orders. These are the same entity under
+  // different names, not separate organisations, so they belong in
+  // alternateName rather than as additional nodes.
+  alternateName: [
+    'OLLI at Hampton University',
+    'Hampton University OLLI',
+    'Osher Lifelong Learning Institute Hampton',
+    'OLLI Hampton University',
+    'OLLI at Hampton',
+    'OLLI Hampton',
+    'Osher at Hampton University',
+    'Osher HamptonU',
+    'HamptonU Osher',
+    'Hampton University Osher',
+    'Osher Institute at Hampton University',
+    'Hampton University Lifelong Learning',
+    'OLLI HU',
+  ],
   url: `${SITE_URL}/`,
   logo: ogImageURL,
   image: ogImageURL,
@@ -99,6 +124,16 @@ const organizationSchema = {
   // standalone body, so the relationship is stated in both directions.
   memberOf: { '@id': HU_ID },
   department: { '@id': HU_ID },
+  // Explicit localisation for regional queries ("lifelong learning Hampton",
+  // "senior classes Hampton Roads"). address/areaServed already assert these
+  // facts; knowsAbout names the subject matter the site genuinely covers.
+  knowsAbout: [
+    'Lifelong learning',
+    'Adult education',
+    'Continuing education for adults 50 and better',
+    'Non-credit courses',
+    'Hampton Roads community programs',
+  ],
   sameAs: ['https://www.facebook.com/groups/227346789203791'],
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
@@ -113,7 +148,7 @@ const websiteSchema = {
   '@id': WEBSITE_ID,
   url: `${SITE_URL}/`,
   name: 'Osher Lifelong Learning Institute at Hampton University',
-  alternateName: 'OLLI at Hampton University',
+  alternateName: ['OLLI at Hampton University', 'Hampton University OLLI', 'OLLI Hampton'],
   description,
   publisher: { '@id': ORG_ID },
   about: { '@id': ORG_ID },
@@ -134,13 +169,15 @@ const webPageSchema = {
   // two nodes are explicitly associated instead of merely co-occurring.
   ...(breadcrumbId ? { breadcrumb: { '@id': breadcrumbId } } : {}),
 };
-
+// A 404 is not a real page in the site hierarchy, so it does not get a WebPage
+// node. The Organization and WebSite nodes still ship so the entity definition
+// remains present, but nothing asserts that the 404 URL is a canonical page.
 const schemaGraph = {
   '@context': 'https://schema.org',
   '@graph': [
     organizationSchema,
     websiteSchema,
-    webPageSchema,
+    ...(noCanonical ? [] : [webPageSchema]),
     ...(Array.isArray(schema) ? schema : schema ? [schema] : []),
   ],
 };
@@ -153,8 +190,19 @@ const schemaGraph = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalURL} />
-    {noIndex && <meta name="robots" content="noindex, follow" />}
+    {!noCanonical && <link rel="canonical" href={canonicalURL} />}
+    {/*
+      Emit robots explicitly in both directions. Indexable pages previously
+      had no robots meta at all, which means "index, follow" only by default;
+      stating it makes the intent unambiguous and unlocks the max-preview
+      directives that control how much text Google may show in a snippet.
+    */}
+    <meta
+      name="robots"
+      content={noIndex
+        ? 'noindex, follow'
+        : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'}
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="OLLI at Hampton University" />

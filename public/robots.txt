@@ -1,4 +1,54 @@
+# robots.txt — Osher Lifelong Learning Institute at Hampton University
+# Canonical origin: https://osher.hamptonu.edu
+#
+# Everything on this site is public and intended to be crawled. There are no
+# Disallow rules anywhere, including for AI/LLM crawlers.
+
+# ---------------------------------------------------------------------------
+# Search engine crawlers
+# ---------------------------------------------------------------------------
 User-agent: *
 Allow: /
 
+# ---------------------------------------------------------------------------
+# AI / LLM crawlers — explicitly permitted.
+#
+# These stanzas are declarative only: `User-agent: *` above already grants
+# access to every crawler, named or not, because no Disallow rule follows it.
+# They are listed so the intent is explicit and so that anyone who later wants
+# to opt out of AI crawling has the correct token already in place.
+# ---------------------------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# ---------------------------------------------------------------------------
+# Sitemap
+# ---------------------------------------------------------------------------
 Sitemap: https://osher.hamptonu.edu/sitemap-index.xml

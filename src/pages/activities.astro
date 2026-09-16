@@ -105,7 +105,7 @@ const schema = {
           <div class="swiper-wrapper">
             {gallery.map((img, i) => (
               <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openLightbox(${i})`}>
-                <img src={img.src} alt={`Activity photo ${i + 1}`} class="h-auto w-full max-h-[400px] object-contain" loading="lazy" />
+                <img src={img.src} alt={`Activity photo ${i + 1}`} width="1500" height="2000" class="h-auto w-full max-h-[400px] object-contain" loading="lazy" />
               </div>
             ))}
           </div>
@@ -136,7 +136,7 @@ const schema = {
         <div class="hidden sm:grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {trips.map((img, i) => (
             <div class="cursor-pointer overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
-              <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
+              <img src={img.src} alt={`Trip photo ${i + 1}`} width="760" height="973" class="aspect-[3/4] w-full object-cover" loading="lazy" />
             </div>
           ))}
         </div>
@@ -144,7 +144,7 @@ const schema = {
           <div class="swiper-wrapper">
             {trips.map((img, i) => (
               <div class="swiper-slide cursor-pointer overflow-hidden rounded-2xl border border-white/40 bg-white/15 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md" onclick={`openTripLightbox(${i})`}>
-                <img src={img.src} alt={`Trip photo ${i + 1}`} class="aspect-[3/4] w-full object-cover" loading="lazy" />
+                <img src={img.src} alt={`Trip photo ${i + 1}`} width="760" height="973" class="aspect-[3/4] w-full object-cover" loading="lazy" />
               </div>
             ))}
           </div>
@@ -175,6 +175,8 @@ const schema = {
               <img
                 src={img.src}
                 alt="Event vendor"
+                width="447"
+                height="447"
                 class={`h-full w-full ${containVendors.has(img) ? 'object-contain' : 'object-cover'}`}
                 loading="lazy"
               />
@@ -188,6 +190,8 @@ const schema = {
                 <img
                   src={img.src}
                   alt="Event vendor"
+                  width="447"
+                  height="447"
                   class={`h-full w-full ${containVendors.has(img) ? 'object-contain' : 'object-cover'}`}
                   loading="lazy"
                 />
@@ -211,7 +215,7 @@ const schema = {
         <div class="swiper-wrapper">
           {gallery.map((img) => (
             <div class="swiper-slide !flex items-center justify-center !w-full !flex-shrink-0">
-              <img src={img.src} alt="Activity photo" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
+              <img src={img.src} alt="Activity photo" width="1500" height="2000" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
             </div>
           ))}
         </div>
@@ -232,7 +236,7 @@ const schema = {
         <div class="swiper-wrapper">
           {trips.map((img) => (
             <div class="swiper-slide !flex items-center justify-center !w-full !flex-shrink-0">
-              <img src={img.src} alt="Trip photo" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
+              <img src={img.src} alt="Trip photo" width="760" height="973" class="h-auto max-h-[80vh] w-full rounded-xl object-contain" loading="lazy" />
             </div>
           ))}
         </div>
