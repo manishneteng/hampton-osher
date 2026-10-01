@@ -81,12 +81,12 @@ const TARGET_WIDTH = {
   'Strip4.jpg': 800,
   'Strip5.jpg': 1200,
   'Strip6.png': 1200,
-  'Trip1.png': 760, // 3:4 trip tiles; 4 shown at once on desktop
   'Trip2.png': 760,
   'Trip3.png': 760,
-  'Trip4.png': 760,
-  'Trip5.png': 760,
+  'Trip5.png': 760, // 3:4 trip tiles; 4 shown at once on desktop
   'Trip6.png': 760,
+  'Trip7.png': 760,
+  'Trip8.png': 760,
   'Vendor7.png': 500, // square vendor tiles, up to 9 across
   'Vendor8.png': 360,
   'Vendor9.png': 360,
